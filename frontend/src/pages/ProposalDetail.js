@@ -1040,8 +1040,9 @@ const ProposalDetail = ({ user, onLogout }) => {
                           <img 
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Allianz_logo.svg/320px-Allianz_logo.svg.png" 
                             alt="Allianz" 
-                            className="h-10 object-contain mr-3"
+                            className="h-8 object-contain mr-3"
                           />
+                          <h3 className="text-2xl font-bold text-gray-900">Allianz</h3>
                         </div>
                         <div className="space-y-4">
                           <div className="flex justify-between">
