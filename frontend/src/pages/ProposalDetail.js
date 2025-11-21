@@ -1038,9 +1038,9 @@ const ProposalDetail = ({ user, onLogout }) => {
                       <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                         <div className="flex items-center mb-6">
                           <img 
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Allianz_logo.svg/320px-Allianz_logo.svg.png" 
+                            src="https://logo.clearbit.com/allianz.com" 
                             alt="Allianz" 
-                            className="h-8 object-contain mr-3"
+                            className="h-8 w-8 object-contain mr-3"
                           />
                           <h3 className="text-2xl font-bold text-gray-900">Allianz</h3>
                         </div>
