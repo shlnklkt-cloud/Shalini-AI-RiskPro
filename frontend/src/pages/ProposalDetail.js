@@ -1226,11 +1226,9 @@ const ProposalDetail = ({ user, onLogout }) => {
                             </th>
                             <th className="text-center py-4 px-4 text-gray-700 font-semibold">
                               <div className="flex items-center justify-center gap-2">
-                                <img 
-                                  src="https://logo.clearbit.com/aig.com" 
-                                  alt="AIG" 
-                                  className="h-5 w-5 object-contain"
-                                />
+                                <div className="h-5 w-5 bg-blue-600 rounded flex items-center justify-center">
+                                  <span className="text-white font-bold text-xs">AIG</span>
+                                </div>
                                 <span>AIG</span>
                               </div>
                             </th>
