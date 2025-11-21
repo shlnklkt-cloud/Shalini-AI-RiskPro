@@ -628,59 +628,172 @@ const ProposalDetail = ({ user, onLogout }) => {
 
         {activeTab === 'risk' && (
           <div className="space-y-6" data-testid="risk-analyzer-content">
-            <Card className="bg-gray-800 border-gray-700">
-              <CardContent className="p-6">
-                <h2 className="text-2xl font-bold text-white mb-6">Risk Analysis Report</h2>
-                
-                <div className="space-y-6">
-                  <div>
-                    <div className="flex justify-between items-center mb-2">
-                      <p className="text-gray-300 font-medium">Property Risk Score</p>
-                      <p className="text-white font-bold">72/100</p>
-                    </div>
-                    <Progress value={72} className="h-3" data-testid="property-risk-score" />
-                    <p className="text-sm text-gray-500 mt-1">Moderate risk profile</p>
+            <div className="bg-white rounded-lg">
+              <div className="p-8">
+                <h1 className="text-5xl font-serif text-gray-900 mb-2">Risk Analyzer</h1>
+                <p className="text-gray-600 text-lg">Comprehensive risk assessment engine for {proposal.title}</p>
+              </div>
+
+              {/* Tabs */}
+              <div className="border-t border-gray-200">
+                <Tabs defaultValue="exposures" className="w-full">
+                  <div className="flex border-b border-gray-200 px-8">
+                    <TabsList className="bg-transparent h-auto p-0 space-x-8">
+                      <TabsTrigger 
+                        value="exposures" 
+                        className="bg-transparent border-b-2 border-transparent data-[state=active]:border-blue-600 rounded-none px-0 pb-4 pt-4 text-gray-600 data-[state=active]:text-blue-600 data-[state=active]:shadow-none"
+                        data-testid="exposures-tab"
+                      >
+                        <TrendingUp className="h-5 w-5 mr-2" />
+                        Exposures
+                      </TabsTrigger>
+                      <TabsTrigger 
+                        value="liabilities" 
+                        className="bg-transparent border-b-2 border-transparent data-[state=active]:border-blue-600 rounded-none px-0 pb-4 pt-4 text-gray-600 data-[state=active]:text-blue-600 data-[state=active]:shadow-none"
+                        data-testid="liabilities-tab"
+                      >
+                        <svg className="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        Limit of Liabilities
+                      </TabsTrigger>
+                    </TabsList>
                   </div>
 
-                  <div>
-                    <div className="flex justify-between items-center mb-2">
-                      <p className="text-gray-300 font-medium">Location Risk</p>
-                      <p className="text-white font-bold">65/100</p>
+                  <TabsContent value="exposures" className="p-8 mt-0">
+                    {/* Value Cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                      <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border border-blue-200">
+                        <p className="text-sm text-gray-700 mb-2">2024 Total Insurable Value</p>
+                        <p className="text-4xl font-bold text-blue-600">$125.0M</p>
+                      </div>
+                      <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 border border-purple-200">
+                        <p className="text-sm text-gray-700 mb-2">2025 Total Insurable Value</p>
+                        <p className="text-4xl font-bold text-purple-600">$132.0M</p>
+                      </div>
+                      <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 border border-green-200">
+                        <p className="text-sm text-gray-700 mb-2">Total Insurable Contingency</p>
+                        <p className="text-4xl font-bold text-green-600">$6.6M</p>
+                      </div>
+                      <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-6 border border-orange-200">
+                        <p className="text-sm text-gray-700 mb-2">Total Including Contingency</p>
+                        <p className="text-4xl font-bold text-orange-600">$138.6M</p>
+                      </div>
                     </div>
-                    <Progress value={65} className="h-3" data-testid="location-risk-score" />
-                    <p className="text-sm text-gray-500 mt-1">Moderate location risk based on {proposal.location}</p>
-                  </div>
 
-                  <div>
-                    <div className="flex justify-between items-center mb-2">
-                      <p className="text-gray-300 font-medium">Business Type Risk</p>
-                      <p className="text-white font-bold">58/100</p>
+                    {/* Exposure Breakdown */}
+                    <div>
+                      <h2 className="text-3xl font-serif text-gray-900 mb-6">Exposure Breakdown</h2>
+                      
+                      {/* Business Interruption */}
+                      <div className="mb-8 pb-8 border-b border-gray-200">
+                        <h3 className="text-xl text-gray-900 mb-4">Business Interruption</h3>
+                        <div className="grid grid-cols-2 gap-8">
+                          <div>
+                            <p className="text-sm text-gray-600 mb-2">Previous Value</p>
+                            <p className="text-3xl font-bold text-gray-900">$45.0M</p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-gray-600 mb-2">Current Value</p>
+                            <p className="text-3xl font-bold text-blue-600">$48.0M</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Building Values */}
+                      <div className="mb-8 pb-8 border-b border-gray-200">
+                        <h3 className="text-xl text-gray-900 mb-4">Building Values</h3>
+                        <div className="grid grid-cols-2 gap-8">
+                          <div>
+                            <p className="text-sm text-gray-600 mb-2">Previous Value</p>
+                            <p className="text-3xl font-bold text-gray-900">$65.0M</p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-gray-600 mb-2">Current Value</p>
+                            <p className="text-3xl font-bold text-blue-600">$69.0M</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Contents */}
+                      <div>
+                        <h3 className="text-xl text-gray-900 mb-4">Contents</h3>
+                        <div className="grid grid-cols-2 gap-8">
+                          <div>
+                            <p className="text-sm text-gray-600 mb-2">Previous Value</p>
+                            <p className="text-3xl font-bold text-gray-900">$15.0M</p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-gray-600 mb-2">Current Value</p>
+                            <p className="text-3xl font-bold text-blue-600">$15.0M</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <Progress value={58} className="h-3" data-testid="business-risk-score" />
-                    <p className="text-sm text-gray-500 mt-1">{proposal.businessType} industry standard risk</p>
-                  </div>
+                  </TabsContent>
 
-                  <div>
-                    <div className="flex justify-between items-center mb-2">
-                      <p className="text-gray-300 font-medium">Financial Exposure</p>
-                      <p className="text-white font-bold">85/100</p>
+                  <TabsContent value="liabilities" className="p-8 mt-0">
+                    <h2 className="text-3xl font-serif text-gray-900 mb-6">Limit of Liabilities - Chicago Marriott Downtown Magnificent Mile</h2>
+                    
+                    <div className="overflow-x-auto">
+                      <table className="w-full">
+                        <thead>
+                          <tr className="border-b-2 border-gray-300">
+                            <th className="text-left py-4 px-4 text-gray-700 font-semibold">Category</th>
+                            <th className="text-right py-4 px-4 text-gray-700 font-semibold">Per Occurrence Limit</th>
+                            <th className="text-right py-4 px-4 text-gray-700 font-semibold">Aggregate Limit</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">Account Receivable</td>
+                            <td className="text-right py-4 px-4 text-gray-900">$2,000,000</td>
+                            <td className="text-right py-4 px-4 text-gray-900">$5,000,000</td>
+                          </tr>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">Pipe Burst</td>
+                            <td className="text-right py-4 px-4 text-gray-900">$5,000,000</td>
+                            <td className="text-right py-4 px-4 text-gray-900">$10,000,000</td>
+                          </tr>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">Boiler & Machinery</td>
+                            <td className="text-right py-4 px-4 text-gray-900">$25,000,000</td>
+                            <td className="text-right py-4 px-4 text-gray-900">$25,000,000</td>
+                          </tr>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">Spoilage/Perishables</td>
+                            <td className="text-right py-4 px-4 text-gray-900">$500,000</td>
+                            <td className="text-right py-4 px-4 text-gray-900">$1,000,000</td>
+                          </tr>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">Water Damage</td>
+                            <td className="text-right py-4 px-4 text-gray-900">$10,000,000</td>
+                            <td className="text-right py-4 px-4 text-gray-900">$20,000,000</td>
+                          </tr>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">Liquor Liability</td>
+                            <td className="text-right py-4 px-4 text-gray-900">$1,000,000</td>
+                            <td className="text-right py-4 px-4 text-gray-900">$2,000,000</td>
+                          </tr>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">Professional Liability</td>
+                            <td className="text-right py-4 px-4 text-gray-900">$5,000,000</td>
+                            <td className="text-right py-4 px-4 text-gray-900">$10,000,000</td>
+                          </tr>
+                          <tr className="hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">
+                              War & Terrorism <span className="text-red-600 text-sm">(Not Covered)</span>
+                            </td>
+                            <td className="text-right py-4 px-4 text-gray-500">-</td>
+                            <td className="text-right py-4 px-4 text-gray-500">-</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
-                    <Progress value={85} className="h-3" data-testid="financial-risk-score" />
-                    <p className="text-sm text-gray-500 mt-1">High value property: {proposal.totalInsuredValue}</p>
-                  </div>
-
-                  <div className="mt-8 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-                    <h3 className="text-white font-semibold mb-2">Risk Recommendations</h3>
-                    <ul className="space-y-2 text-gray-300 text-sm">
-                      <li>• Consider additional property protection measures</li>
-                      <li>• Review location-specific compliance requirements for {proposal.location}</li>
-                      <li>• Enhanced coverage recommended for high-value assets</li>
-                      <li>• Schedule annual risk assessment review</li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                  </TabsContent>
+                </Tabs>
+              </div>
+            </div>
           </div>
         )}
 
