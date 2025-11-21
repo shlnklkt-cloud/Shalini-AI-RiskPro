@@ -1166,8 +1166,9 @@ const ProposalDetail = ({ user, onLogout }) => {
                                 <img 
                                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Munich_Re_logo.svg/320px-Munich_Re_logo.svg.png" 
                                   alt="Munich Re" 
-                                  className="h-8 object-contain mr-3"
+                                  className="h-6 object-contain mr-3"
                                 />
+                                <span className="font-semibold text-gray-900">Munich Re</span>
                               </div>
                             </td>
                             <td className="text-right py-6 px-4 text-gray-900 font-semibold">$2,990,000</td>
