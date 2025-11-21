@@ -848,7 +848,7 @@ const ProposalDetail = ({ user, onLogout }) => {
                     
                     {/* Chart - Attachment Point Visualization */}
                     <div className="mb-8 bg-white p-8 rounded-lg border border-gray-200">
-                      <div className="space-y-1">
+                      <div className="space-y-0">
                         {/* Liberty Mutual */}
                         <div className="flex items-center h-16">
                           <div className="w-full flex">
