@@ -656,7 +656,7 @@ const ProposalDetail = ({ user, onLogout }) => {
                   onClick={() => handleStatusUpdate('to_do')}
                   data-testid="status-todo-button"
                 >
-                  To Do
+                  Pending Submission
                 </Button>
                 <Button
                   variant={proposal.status === 'in_process' ? 'default' : 'outline'}
