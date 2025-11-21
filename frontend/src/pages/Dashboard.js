@@ -457,10 +457,10 @@ const Dashboard = ({ user, onLogout }) => {
               </TableHeader>
               <TableBody>
                 {filteredProposals.map((proposal) => (
-                  <TableRow key={proposal.id} className="border-gray-700 hover:bg-gray-700/50" data-testid={`proposal-row-${proposal.id}`}>
-                    <TableCell className="font-medium text-white">{proposal.title}</TableCell>
-                    <TableCell className="text-gray-300">{proposal.client}</TableCell>
-                    <TableCell className="text-gray-300">{proposal.location}</TableCell>
+                  <TableRow key={proposal.id} className="border-gray-200 hover:bg-gray-50" data-testid={`proposal-row-${proposal.id}`}>
+                    <TableCell className="font-medium text-gray-900">{proposal.title}</TableCell>
+                    <TableCell className="text-gray-700">{proposal.client}</TableCell>
+                    <TableCell className="text-gray-700">{proposal.location}</TableCell>
                     <TableCell>
                       <Badge className={getPriorityColor(proposal.priority)} data-testid={`priority-badge-${proposal.id}`}>
                         {proposal.priority}
