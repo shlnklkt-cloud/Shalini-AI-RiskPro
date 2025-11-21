@@ -142,9 +142,9 @@ const Dashboard = ({ user, onLogout }) => {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-900">
+    <div className="flex min-h-screen bg-gray-50">
       {/* Sidebar */}
-      <div className="w-64 bg-gray-800 border-r border-gray-700 p-6" data-testid="sidebar">
+      <div className="w-64 bg-white border-r border-gray-200 p-6 shadow-sm" data-testid="sidebar">
         <div className="space-y-6">
           <Button 
             variant="default" 
