@@ -18,6 +18,7 @@ const ProposalDetail = ({ user, onLogout }) => {
   const [proposal, setProposal] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
+  const [showFullAssessment, setShowFullAssessment] = useState(false);
 
   useEffect(() => {
     fetchProposal();
