@@ -268,6 +268,84 @@ const ProposalDetail = ({ user, onLogout }) => {
 
         {activeTab === 'risk' && (
           <div className="space-y-6" data-testid="risk-analyzer-content">
+            {/* Document Upload Section */}
+            <Card className="bg-gray-800 border-gray-700">
+              <CardContent className="p-6">
+                <h2 className="text-2xl font-bold text-white mb-4">Document Extraction & Analysis</h2>
+                <p className="text-gray-400 mb-4">Upload property documents for AI-powered risk assessment</p>
+                
+                <div className="border-2 border-dashed border-gray-600 rounded-lg p-8 text-center hover:border-blue-500 transition-colors cursor-pointer" data-testid="document-upload-area">
+                  <input type="file" id="file-upload" className="hidden" accept=".pdf,.doc,.docx,.jpg,.png" />
+                  <label htmlFor="file-upload" className="cursor-pointer">
+                    <FileText className="h-12 w-12 text-gray-500 mx-auto mb-3" />
+                    <p className="text-white font-medium mb-1">Click to upload documents</p>
+                    <p className="text-gray-500 text-sm">PDF, DOC, DOCX, JPG, PNG up to 10MB</p>
+                  </label>
+                </div>
+
+                <div className="mt-6 space-y-3">
+                  <div className="flex items-center justify-between p-3 bg-gray-700/50 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <FileText className="h-5 w-5 text-blue-400" />
+                      <div>
+                        <p className="text-white text-sm font-medium">Property_Assessment.pdf</p>
+                        <p className="text-gray-500 text-xs">2.4 MB • Extracted 5 mins ago</p>
+                      </div>
+                    </div>
+                    <Badge className="bg-green-500/20 text-green-400 border-green-500/30">Processed</Badge>
+                  </div>
+
+                  <div className="flex items-center justify-between p-3 bg-gray-700/50 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <FileText className="h-5 w-5 text-blue-400" />
+                      <div>
+                        <p className="text-white text-sm font-medium">Building_Inspection.pdf</p>
+                        <p className="text-gray-500 text-xs">1.8 MB • Extracted 12 mins ago</p>
+                      </div>
+                    </div>
+                    <Badge className="bg-green-500/20 text-green-400 border-green-500/30">Processed</Badge>
+                  </div>
+
+                  <div className="flex items-center justify-between p-3 bg-gray-700/50 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <FileText className="h-5 w-5 text-blue-400" />
+                      <div>
+                        <p className="text-white text-sm font-medium">Financial_Statements.pdf</p>
+                        <p className="text-gray-500 text-xs">3.2 MB • Extracted 20 mins ago</p>
+                      </div>
+                    </div>
+                    <Badge className="bg-green-500/20 text-green-400 border-green-500/30">Processed</Badge>
+                  </div>
+                </div>
+
+                <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                  <h3 className="text-white font-semibold mb-2 flex items-center gap-2">
+                    <BarChart3 className="h-4 w-4" />
+                    AI Extraction Summary
+                  </h3>
+                  <div className="grid grid-cols-2 gap-4 text-sm mt-3">
+                    <div>
+                      <p className="text-gray-400">Documents Processed</p>
+                      <p className="text-white font-semibold text-lg">3</p>
+                    </div>
+                    <div>
+                      <p className="text-gray-400">Data Points Extracted</p>
+                      <p className="text-white font-semibold text-lg">47</p>
+                    </div>
+                    <div>
+                      <p className="text-gray-400">Risk Factors Identified</p>
+                      <p className="text-white font-semibold text-lg">8</p>
+                    </div>
+                    <div>
+                      <p className="text-gray-400">Confidence Score</p>
+                      <p className="text-white font-semibold text-lg">94%</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Risk Analysis Report */}
             <Card className="bg-gray-800 border-gray-700">
               <CardContent className="p-6">
                 <h2 className="text-2xl font-bold text-white mb-6">Risk Analysis Report</h2>
@@ -279,7 +357,7 @@ const ProposalDetail = ({ user, onLogout }) => {
                       <p className="text-white font-bold">72/100</p>
                     </div>
                     <Progress value={72} className="h-3" data-testid="property-risk-score" />
-                    <p className="text-sm text-gray-500 mt-1">Moderate risk profile</p>
+                    <p className="text-sm text-gray-500 mt-1">Moderate risk profile based on extracted data</p>
                   </div>
 
                   <div>
@@ -310,13 +388,46 @@ const ProposalDetail = ({ user, onLogout }) => {
                   </div>
 
                   <div className="mt-8 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-                    <h3 className="text-white font-semibold mb-2">Risk Recommendations</h3>
+                    <h3 className="text-white font-semibold mb-2">AI-Generated Risk Recommendations</h3>
                     <ul className="space-y-2 text-gray-300 text-sm">
                       <li>• Consider additional property protection measures</li>
                       <li>• Review location-specific compliance requirements for {proposal.location}</li>
                       <li>• Enhanced coverage recommended for high-value assets</li>
+                      <li>• Property inspection report shows minor structural concerns - monitor quarterly</li>
+                      <li>• Financial statements indicate strong stability - low credit risk</li>
                       <li>• Schedule annual risk assessment review</li>
                     </ul>
+                  </div>
+
+                  {/* Extracted Key Data Points */}
+                  <div className="mt-6 p-4 bg-gray-700/50 rounded-lg">
+                    <h3 className="text-white font-semibold mb-3">Key Data Extracted from Documents</h3>
+                    <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <p className="text-gray-400">Building Age</p>
+                        <p className="text-white">15 years</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-400">Last Inspection</p>
+                        <p className="text-white">March 2025</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-400">Safety Systems</p>
+                        <p className="text-white">Fire suppression, CCTV</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-400">Occupancy Rate</p>
+                        <p className="text-white">87%</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-400">Revenue (Annual)</p>
+                        <p className="text-white">$12.5M</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-400">Claims History</p>
+                        <p className="text-white">2 in last 5 years</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </CardContent>
