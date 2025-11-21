@@ -291,11 +291,270 @@ const ProposalDetail = ({ user, onLogout }) => {
               </div>
 
               <div className="flex justify-center">
-                <Button className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 text-lg" data-testid="view-full-assessment-button">
+                <Button 
+                  className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 text-lg" 
+                  data-testid="view-full-assessment-button"
+                  onClick={() => setShowFullAssessment(true)}
+                >
                   View Full Assessment
                 </Button>
               </div>
             </div>
+
+            {/* Full Risk Assessment Modal */}
+            {showFullAssessment && (
+              <div className="fixed inset-0 bg-black/50 z-50 overflow-y-auto" onClick={() => setShowFullAssessment(false)}>
+                <div className="min-h-screen px-4 py-8">
+                  <div className="max-w-7xl mx-auto bg-white rounded-lg" onClick={(e) => e.stopPropagation()}>
+                    {/* Header */}
+                    <div className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white p-8 rounded-t-lg">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h1 className="text-4xl font-bold mb-2">Comprehensive Risk Assessment</h1>
+                          <p className="text-blue-100">Property: {proposal.title}</p>
+                          <p className="text-blue-100">Location: {proposal.location}</p>
+                        </div>
+                        <Button 
+                          variant="ghost" 
+                          className="text-white hover:bg-white/20"
+                          onClick={() => setShowFullAssessment(false)}
+                        >
+                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </Button>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-8 space-y-8">
+                      {/* Overall Risk Score */}
+                      <div className="text-center">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-4">Overall Risk Score</h2>
+                        <div className="flex items-center justify-center mb-6">
+                          <div className="relative">
+                            <svg className="transform -rotate-90" width="200" height="200">
+                              <circle cx="100" cy="100" r="80" stroke="#e5e7eb" strokeWidth="16" fill="none" />
+                              <circle
+                                cx="100" cy="100" r="80"
+                                stroke="#06b6d4" strokeWidth="16" fill="none"
+                                strokeDasharray={502} strokeDashoffset={502 - (502 * 48.5) / 100}
+                                strokeLinecap="round"
+                              />
+                            </svg>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <span className="text-5xl font-bold text-cyan-500">48.5</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="max-w-3xl mx-auto bg-blue-50 p-6 rounded-lg">
+                          <h3 className="text-xl font-bold text-gray-900 mb-2">Risk Analysis Summary</h3>
+                          <p className="text-gray-700">
+                            This property has been classified as <span className="font-bold text-orange-600">MODERATE RISK</span> based on comprehensive catastrophic modeling. 
+                            The overall risk score of 48.5 indicates moderate exposure to natural disasters, with flood and hurricane risks being the primary concerns. 
+                            Enhanced mitigation strategies are recommended for these specific perils.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Detailed Risk Component Breakdown */}
+                      <div>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-6">Detailed Risk Component Breakdown</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          {/* Earthquake Risk */}
+                          <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-6">
+                            <div className="flex items-center justify-between mb-4">
+                              <h3 className="text-xl font-bold text-gray-900">Earthquake Risk</h3>
+                              <span className="text-3xl font-bold text-orange-600">42.0</span>
+                            </div>
+                            <Progress value={42} className="h-3 mb-4" style={{backgroundColor: '#fed7aa'}} />
+                            <p className="text-gray-700 mb-4">
+                              Moderate seismic activity in the region. Building age and construction type influence vulnerability. 
+                              Regular structural assessments recommended.
+                            </p>
+                            <div className="bg-white p-3 rounded">
+                              <p className="text-sm font-semibold text-gray-900">Recommendations for Improvement:</p>
+                              <p className="text-sm text-gray-700">Seismic retrofitting, foundation reinforcement</p>
+                            </div>
+                          </div>
+
+                          {/* Wildfire Risk */}
+                          <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6">
+                            <div className="flex items-center justify-between mb-4">
+                              <h3 className="text-xl font-bold text-gray-900">Wildfire Risk</h3>
+                              <span className="text-3xl font-bold text-green-600">20.0</span>
+                            </div>
+                            <Progress value={20} className="h-3 mb-4" style={{backgroundColor: '#bbf7d0'}} />
+                            <p className="text-gray-700 mb-4">
+                              Low wildfire risk due to urban location and adequate fire protection infrastructure. 
+                              Vegetation management and fire suppression systems in place.
+                            </p>
+                            <div className="bg-white p-3 rounded">
+                              <p className="text-sm font-semibold text-gray-900">Recommendations for Improvement:</p>
+                              <p className="text-sm text-gray-700">Maintain defensible space, upgrade fire detection systems</p>
+                            </div>
+                          </div>
+
+                          {/* Hurricane Risk */}
+                          <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-6">
+                            <div className="flex items-center justify-between mb-4">
+                              <h3 className="text-xl font-bold text-gray-900">Hurricane Risk</h3>
+                              <span className="text-3xl font-bold text-orange-600">65.0</span>
+                            </div>
+                            <Progress value={65} className="h-3 mb-4" style={{backgroundColor: '#fed7aa'}} />
+                            <p className="text-gray-700 mb-4">
+                              Elevated hurricane exposure based on coastal proximity. Wind speed projections indicate potential 
+                              for Category 2-3 storms. Window and roof vulnerabilities identified.
+                            </p>
+                            <div className="bg-white p-3 rounded">
+                              <p className="text-sm font-semibold text-gray-900">Recommendations for Improvement:</p>
+                              <p className="text-sm text-gray-700">Impact-resistant windows, roof anchoring, storm shutters</p>
+                            </div>
+                          </div>
+
+                          {/* Flood Risk */}
+                          <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6">
+                            <div className="flex items-center justify-between mb-4">
+                              <h3 className="text-xl font-bold text-gray-900">Flood Risk</h3>
+                              <span className="text-3xl font-bold text-red-600">67.0</span>
+                            </div>
+                            <Progress value={67} className="h-3 mb-4" style={{backgroundColor: '#fecaca'}} />
+                            <p className="text-gray-700 mb-4">
+                              High flood risk identified. Property located in FEMA flood zone with historical flooding events. 
+                              Storm surge and river overflow are primary concerns.
+                            </p>
+                            <div className="bg-white p-3 rounded">
+                              <p className="text-sm font-semibold text-gray-900">Recommendations for Improvement:</p>
+                              <p className="text-sm text-gray-700">Elevation, flood barriers, improved drainage systems</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Catastrophic Risk Modeling */}
+                      <div>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-6">Catastrophic Risk Modeling</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                          <div className="bg-gradient-to-br from-orange-500 to-red-500 text-white rounded-lg p-6">
+                            <h3 className="text-lg font-bold mb-2">Earthquake Risk</h3>
+                            <div className="text-4xl font-bold mb-4">$336K</div>
+                            <div className="space-y-1 text-sm">
+                              <p>AAL: $12,500</p>
+                              <p>PML (100yr): $145K</p>
+                              <p>PML (250yr): $336K</p>
+                              <p className="pt-2 border-t border-white/30">Probability: 0.4%</p>
+                            </div>
+                          </div>
+
+                          <div className="bg-gradient-to-br from-blue-500 to-cyan-500 text-white rounded-lg p-6">
+                            <h3 className="text-lg font-bold mb-2">Flood Risk</h3>
+                            <div className="text-4xl font-bold mb-4">$206K</div>
+                            <div className="space-y-1 text-sm">
+                              <p>AAL: $18,200</p>
+                              <p>PML (100yr): $98K</p>
+                              <p>PML (250yr): $206K</p>
+                              <p className="pt-2 border-t border-white/30">Probability: 2.3%</p>
+                            </div>
+                          </div>
+
+                          <div className="bg-gradient-to-br from-purple-500 to-pink-500 text-white rounded-lg p-6">
+                            <h3 className="text-lg font-bold mb-2">Hurricane Risk</h3>
+                            <div className="text-4xl font-bold mb-4">$286K</div>
+                            <div className="space-y-1 text-sm">
+                              <p>AAL: $15,800</p>
+                              <p>PML (100yr): $132K</p>
+                              <p>PML (250yr): $286K</p>
+                              <p className="pt-2 border-t border-white/30">Probability: 1.8%</p>
+                            </div>
+                          </div>
+
+                          <div className="bg-gradient-to-br from-green-500 to-teal-500 text-white rounded-lg p-6">
+                            <h3 className="text-lg font-bold mb-2">Wildfire Risk</h3>
+                            <div className="text-4xl font-bold mb-4">$107K</div>
+                            <div className="space-y-1 text-sm">
+                              <p>AAL: $4,200</p>
+                              <p>PML (100yr): $52K</p>
+                              <p>PML (250yr): $107K</p>
+                              <p className="pt-2 border-t border-white/30">Probability: 0.2%</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Location Intelligence */}
+                      <div>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-6">Location Intelligence & Risk Mapping</h2>
+                        <div className="bg-gray-100 rounded-lg p-6 h-96 flex items-center justify-center">
+                          <div className="text-center">
+                            <svg className="w-24 h-24 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                            </svg>
+                            <p className="text-gray-600 font-medium">Interactive Risk Map</p>
+                            <p className="text-gray-500 text-sm">{proposal.location}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Detailed Risk Analysis */}
+                      <div>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-6">Detailed Risk & Concentration Analysis</h2>
+                        <div className="bg-gray-50 rounded-lg p-6">
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+                            <div>
+                              <p className="text-sm text-gray-600 mb-1">Total Insured Value</p>
+                              <p className="text-2xl font-bold text-gray-900">{proposal.totalInsuredValue}</p>
+                            </div>
+                            <div>
+                              <p className="text-sm text-gray-600 mb-1">Building Type</p>
+                              <p className="text-2xl font-bold text-gray-900">{proposal.businessType}</p>
+                            </div>
+                            <div>
+                              <p className="text-sm text-gray-600 mb-1">Year Built</p>
+                              <p className="text-2xl font-bold text-gray-900">2010</p>
+                            </div>
+                            <div>
+                              <p className="text-sm text-gray-600 mb-1">Construction</p>
+                              <p className="text-2xl font-bold text-gray-900">Steel Frame</p>
+                            </div>
+                          </div>
+                          <div className="border-t border-gray-300 pt-6">
+                            <h3 className="text-xl font-bold text-gray-900 mb-4">Risk Mitigation Recommendations</h3>
+                            <ul className="space-y-3 text-gray-700">
+                              <li className="flex items-start">
+                                <span className="text-cyan-500 font-bold mr-2">•</span>
+                                Implement comprehensive flood mitigation measures including elevation and drainage improvements
+                              </li>
+                              <li className="flex items-start">
+                                <span className="text-cyan-500 font-bold mr-2">•</span>
+                                Upgrade hurricane protection with impact-resistant materials and reinforced openings
+                              </li>
+                              <li className="flex items-start">
+                                <span className="text-cyan-500 font-bold mr-2">•</span>
+                                Consider seismic retrofitting to reduce earthquake vulnerability
+                              </li>
+                              <li className="flex items-start">
+                                <span className="text-cyan-500 font-bold mr-2">•</span>
+                                Annual risk assessment reviews recommended to monitor changing exposure levels
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="flex gap-4 justify-center pt-6 border-t border-gray-200">
+                        <Button className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3">
+                          Download Full Report
+                        </Button>
+                        <Button variant="outline" className="border-gray-300 px-8 py-3" onClick={() => setShowFullAssessment(false)}>
+                          Close
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Status Update Section */}
             <div className="mt-8">
