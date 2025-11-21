@@ -706,7 +706,7 @@ const ProposalDetail = ({ user, onLogout }) => {
 
                   <TabsContent value="exposures" className="p-8 mt-0">
                     {/* Value Cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                       <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border border-blue-200">
                         <p className="text-sm text-gray-700 mb-2">2024 Total Insurable Value</p>
                         <p className="text-4xl font-bold text-blue-600">$125.0M</p>
@@ -714,14 +714,6 @@ const ProposalDetail = ({ user, onLogout }) => {
                       <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 border border-purple-200">
                         <p className="text-sm text-gray-700 mb-2">2025 Total Insurable Value</p>
                         <p className="text-4xl font-bold text-purple-600">$132.0M</p>
-                      </div>
-                      <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 border border-green-200">
-                        <p className="text-sm text-gray-700 mb-2">Total Insurable Contingency</p>
-                        <p className="text-4xl font-bold text-green-600">$6.6M</p>
-                      </div>
-                      <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-6 border border-orange-200">
-                        <p className="text-sm text-gray-700 mb-2">Total Including Contingency</p>
-                        <p className="text-4xl font-bold text-orange-600">$138.6M</p>
                       </div>
                     </div>
 
@@ -735,11 +727,11 @@ const ProposalDetail = ({ user, onLogout }) => {
                         <div className="grid grid-cols-2 gap-8">
                           <div>
                             <p className="text-sm text-gray-600 mb-2">Previous Value</p>
-                            <p className="text-3xl font-bold text-gray-900">$45.0M</p>
+                            <p className="text-3xl font-bold text-blue-600">$45.0M</p>
                           </div>
                           <div>
                             <p className="text-sm text-gray-600 mb-2">Current Value</p>
-                            <p className="text-3xl font-bold text-blue-600">$48.0M</p>
+                            <p className="text-3xl font-bold text-purple-600">$48.0M</p>
                           </div>
                         </div>
                       </div>
@@ -750,11 +742,11 @@ const ProposalDetail = ({ user, onLogout }) => {
                         <div className="grid grid-cols-2 gap-8">
                           <div>
                             <p className="text-sm text-gray-600 mb-2">Previous Value</p>
-                            <p className="text-3xl font-bold text-gray-900">$65.0M</p>
+                            <p className="text-3xl font-bold text-blue-600">$65.0M</p>
                           </div>
                           <div>
                             <p className="text-sm text-gray-600 mb-2">Current Value</p>
-                            <p className="text-3xl font-bold text-blue-600">$69.0M</p>
+                            <p className="text-3xl font-bold text-purple-600">$69.0M</p>
                           </div>
                         </div>
                       </div>
@@ -765,11 +757,11 @@ const ProposalDetail = ({ user, onLogout }) => {
                         <div className="grid grid-cols-2 gap-8">
                           <div>
                             <p className="text-sm text-gray-600 mb-2">Previous Value</p>
-                            <p className="text-3xl font-bold text-gray-900">$15.0M</p>
+                            <p className="text-3xl font-bold text-blue-600">$15.0M</p>
                           </div>
                           <div>
                             <p className="text-sm text-gray-600 mb-2">Current Value</p>
-                            <p className="text-3xl font-bold text-blue-600">$15.0M</p>
+                            <p className="text-3xl font-bold text-purple-600">$15.0M</p>
                           </div>
                         </div>
                       </div>
