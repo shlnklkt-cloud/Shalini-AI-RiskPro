@@ -1181,9 +1181,9 @@ const ProposalDetail = ({ user, onLogout }) => {
                             <td className="py-6 px-4">
                               <div className="flex items-center">
                                 <img 
-                                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/AIG_logo.svg/320px-AIG_logo.svg.png" 
+                                  src="https://logo.clearbit.com/aig.com" 
                                   alt="AIG" 
-                                  className="h-6 object-contain mr-3"
+                                  className="h-6 w-6 object-contain mr-3"
                                 />
                                 <span className="font-semibold text-gray-900">AIG</span>
                               </div>
