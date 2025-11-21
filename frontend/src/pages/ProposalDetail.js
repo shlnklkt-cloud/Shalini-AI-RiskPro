@@ -1095,7 +1095,11 @@ const ProposalDetail = ({ user, onLogout }) => {
                       {/* AIG */}
                       <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                         <div className="flex items-center mb-6">
-                          <h3 className="text-2xl font-bold text-gray-900">AIG</h3>
+                          <img 
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/AIG_logo.svg/320px-AIG_logo.svg.png" 
+                            alt="AIG" 
+                            className="h-10 object-contain"
+                          />
                         </div>
                         <div className="space-y-4">
                           <div className="flex justify-between">
