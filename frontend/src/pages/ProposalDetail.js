@@ -1155,10 +1155,11 @@ const ProposalDetail = ({ user, onLogout }) => {
                           <tr className="border-b border-gray-200 hover:bg-gray-50">
                             <td className="py-6 px-4">
                               <div className="flex items-center">
-                                <div className="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center text-white font-bold mr-3">
-                                  M
-                                </div>
-                                <span className="font-semibold text-gray-900">Munich Re</span>
+                                <img 
+                                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Munich_Re_logo.svg/320px-Munich_Re_logo.svg.png" 
+                                  alt="Munich Re" 
+                                  className="h-8 object-contain mr-3"
+                                />
                               </div>
                             </td>
                             <td className="text-right py-6 px-4 text-gray-900 font-semibold">$2,990,000</td>
