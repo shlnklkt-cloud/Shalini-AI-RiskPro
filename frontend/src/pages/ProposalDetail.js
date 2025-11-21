@@ -1156,12 +1156,9 @@ const ProposalDetail = ({ user, onLogout }) => {
                           <tr className="hover:bg-gray-50">
                             <td className="py-6 px-4">
                               <div className="flex items-center">
-                                <img 
-                                  src="https://companieslogo.com/img/orig/AIG-b3933229.png" 
-                                  alt="AIG" 
-                                  className="h-6 object-contain mr-3"
-                                  onError={(e) => {e.target.onerror = null; e.target.src='https://img.logo.dev/aig.com?token=pk_X-NP3c6bQmyWRNA4b8kWWA';}}
-                                />
+                                <div className="h-6 px-3 bg-blue-700 rounded flex items-center justify-center mr-3">
+                                  <span className="text-white font-bold text-sm tracking-wide">AIG</span>
+                                </div>
                                 <span className="font-semibold text-gray-900">AIG</span>
                               </div>
                             </td>
