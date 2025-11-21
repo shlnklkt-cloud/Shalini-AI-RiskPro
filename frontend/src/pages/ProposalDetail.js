@@ -1178,11 +1178,9 @@ const ProposalDetail = ({ user, onLogout }) => {
                           <tr className="hover:bg-gray-50">
                             <td className="py-6 px-4">
                               <div className="flex items-center">
-                                <img 
-                                  src="https://logo.clearbit.com/aig.com" 
-                                  alt="AIG" 
-                                  className="h-6 w-6 object-contain mr-3"
-                                />
+                                <div className="h-6 w-6 bg-blue-600 rounded flex items-center justify-center mr-3">
+                                  <span className="text-white font-bold text-xs">AIG</span>
+                                </div>
                                 <span className="font-semibold text-gray-900">AIG</span>
                               </div>
                             </td>
