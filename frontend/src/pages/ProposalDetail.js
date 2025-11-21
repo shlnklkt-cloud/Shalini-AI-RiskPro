@@ -1209,30 +1209,33 @@ const ProposalDetail = ({ user, onLogout }) => {
                           <tr className="border-b-2 border-gray-300">
                             <th className="text-left py-4 px-4 text-gray-700 font-semibold">Category</th>
                             <th className="text-center py-4 px-4 text-gray-700 font-semibold">
-                              <div className="flex items-center justify-center">
+                              <div className="flex items-center justify-center gap-2">
                                 <img 
                                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Allianz_logo.svg/320px-Allianz_logo.svg.png" 
                                   alt="Allianz" 
-                                  className="h-6 object-contain"
+                                  className="h-5 object-contain"
                                 />
+                                <span>Allianz</span>
                               </div>
                             </th>
                             <th className="text-center py-4 px-4 text-gray-700 font-semibold">
-                              <div className="flex items-center justify-center">
+                              <div className="flex items-center justify-center gap-2">
                                 <img 
                                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Munich_Re_logo.svg/320px-Munich_Re_logo.svg.png" 
                                   alt="Munich Re" 
-                                  className="h-6 object-contain"
+                                  className="h-5 object-contain"
                                 />
+                                <span>Munich Re</span>
                               </div>
                             </th>
                             <th className="text-center py-4 px-4 text-gray-700 font-semibold">
-                              <div className="flex items-center justify-center">
+                              <div className="flex items-center justify-center gap-2">
                                 <img 
                                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/AIG_logo.svg/320px-AIG_logo.svg.png" 
                                   alt="AIG" 
-                                  className="h-6 object-contain"
+                                  className="h-5 object-contain"
                                 />
+                                <span>AIG</span>
                               </div>
                             </th>
                           </tr>
