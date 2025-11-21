@@ -848,86 +848,86 @@ const ProposalDetail = ({ user, onLogout }) => {
                     
                     {/* Chart - Attachment Point Visualization */}
                     <div className="mb-8 bg-white p-8 rounded-lg border border-gray-200">
-                      <div className="space-y-0">
+                      <div>
                         {/* Liberty Mutual */}
-                        <div className="flex items-center h-16">
-                          <div className="w-full flex">
-                            <div className="bg-blue-900 flex items-center justify-center text-white font-semibold px-4" style={{width: '10%', height: '48px'}}>
+                        <div className="flex items-center" style={{height: '48px', margin: 0, padding: 0}}>
+                          <div className="w-full flex" style={{margin: 0}}>
+                            <div className="bg-blue-900 flex items-center justify-center text-white font-semibold px-4" style={{width: '10%', height: '48px', margin: 0}}>
                               <span className="text-sm">Liberty Mutual (80%)</span>
                             </div>
-                            <div className="bg-cyan-400 flex items-center justify-center text-white font-bold px-4" style={{width: '50%', height: '48px'}}>
+                            <div className="bg-cyan-400 flex items-center justify-center text-white font-bold px-4" style={{width: '50%', height: '48px', margin: 0}}>
                               <span>Zurich (100%)</span>
                             </div>
-                            <div className="flex items-center justify-start px-4" style={{width: '40%', height: '48px'}}>
+                            <div className="flex items-center justify-start px-4" style={{width: '40%', height: '48px', margin: 0}}>
                               <span className="text-gray-700 font-semibold">$23,000</span>
                             </div>
                           </div>
                         </div>
 
                         {/* Munich Re */}
-                        <div className="flex items-center h-16">
-                          <div className="w-full flex">
-                            <div className="bg-blue-700 flex items-center justify-center text-white font-semibold px-4" style={{width: '20%', height: '48px'}}>
+                        <div className="flex items-center" style={{height: '48px', margin: 0, padding: 0}}>
+                          <div className="w-full flex" style={{margin: 0}}>
+                            <div className="bg-blue-700 flex items-center justify-center text-white font-semibold px-4" style={{width: '20%', height: '48px', margin: 0}}>
                               <span className="text-sm">Munich Re (40%)</span>
                             </div>
-                            <div className="bg-purple-500 flex items-center justify-center text-white font-bold px-4" style={{width: '60%', height: '48px'}}>
+                            <div className="bg-purple-500 flex items-center justify-center text-white font-bold px-4" style={{width: '60%', height: '48px', margin: 0}}>
                               <span>AIG (80%)</span>
                             </div>
-                            <div className="flex items-center justify-start px-4" style={{width: '20%', height: '48px'}}>
+                            <div className="flex items-center justify-start px-4" style={{width: '20%', height: '48px', margin: 0}}>
                               <span className="text-gray-700 font-semibold">$27,000</span>
                             </div>
                           </div>
                         </div>
 
                         {/* Chubb */}
-                        <div className="flex items-center h-16">
-                          <div className="w-full flex">
-                            <div className="bg-purple-600 flex items-center justify-center text-white font-semibold px-4" style={{width: '25%', height: '48px'}}>
+                        <div className="flex items-center" style={{height: '48px', margin: 0, padding: 0}}>
+                          <div className="w-full flex" style={{margin: 0}}>
+                            <div className="bg-purple-600 flex items-center justify-center text-white font-semibold px-4" style={{width: '25%', height: '48px', margin: 0}}>
                               <span className="text-sm">Chubb (70%)</span>
                             </div>
-                            <div className="flex items-center justify-start px-4" style={{width: '75%', height: '48px'}}>
+                            <div className="flex items-center justify-start px-4" style={{width: '75%', height: '48px', margin: 0}}>
                               <span className="text-gray-700 font-semibold">$24,000</span>
                             </div>
                           </div>
                         </div>
 
                         {/* Allianz */}
-                        <div className="flex items-center h-16">
-                          <div className="w-full flex">
-                            <div className="bg-indigo-700 flex items-center justify-center text-white font-semibold px-4" style={{width: '30%', height: '48px'}}>
+                        <div className="flex items-center" style={{height: '48px', margin: 0, padding: 0}}>
+                          <div className="w-full flex" style={{margin: 0}}>
+                            <div className="bg-indigo-700 flex items-center justify-center text-white font-semibold px-4" style={{width: '30%', height: '48px', margin: 0}}>
                               <span className="text-sm">Allianz (50%)</span>
                             </div>
-                            <div className="flex items-center justify-start px-4" style={{width: '70%', height: '48px'}}>
+                            <div className="flex items-center justify-start px-4" style={{width: '70%', height: '48px', margin: 0}}>
                               <span className="text-gray-700 font-semibold">$28,000</span>
                             </div>
                           </div>
                         </div>
 
                         {/* Zurich */}
-                        <div className="flex items-center h-16">
-                          <div className="w-full flex">
-                            <div className="bg-blue-900 flex items-center justify-center text-white font-semibold px-4" style={{width: '10%', height: '48px'}}>
+                        <div className="flex items-center" style={{height: '48px', margin: 0, padding: 0}}>
+                          <div className="w-full flex" style={{margin: 0}}>
+                            <div className="bg-blue-900 flex items-center justify-center text-white font-semibold px-4" style={{width: '10%', height: '48px', margin: 0}}>
                               <span className="text-sm">Liberty Mutual (80%)</span>
                             </div>
-                            <div className="bg-cyan-400 flex items-center justify-center text-white font-bold px-4" style={{width: '50%', height: '48px'}}>
+                            <div className="bg-cyan-400 flex items-center justify-center text-white font-bold px-4" style={{width: '50%', height: '48px', margin: 0}}>
                               <span>Zurich (20%)</span>
                             </div>
-                            <div className="flex items-center justify-start px-4" style={{width: '40%', height: '48px'}}>
+                            <div className="flex items-center justify-start px-4" style={{width: '40%', height: '48px', margin: 0}}>
                               <span className="text-gray-700 font-semibold">$26,000</span>
                             </div>
                           </div>
                         </div>
 
                         {/* AIG */}
-                        <div className="flex items-center h-16">
-                          <div className="w-full flex">
-                            <div className="bg-blue-700 flex items-center justify-center text-white font-semibold px-4" style={{width: '20%', height: '48px'}}>
+                        <div className="flex items-center" style={{height: '48px', margin: 0, padding: 0}}>
+                          <div className="w-full flex" style={{margin: 0}}>
+                            <div className="bg-blue-700 flex items-center justify-center text-white font-semibold px-4" style={{width: '20%', height: '48px', margin: 0}}>
                               <span className="text-sm">Munich Re (40%)</span>
                             </div>
-                            <div className="bg-purple-500 flex items-center justify-center text-white font-bold px-4" style={{width: '60%', height: '48px'}}>
+                            <div className="bg-purple-500 flex items-center justify-center text-white font-bold px-4" style={{width: '60%', height: '48px', margin: 0}}>
                               <span>AIG (80%)</span>
                             </div>
-                            <div className="flex items-center justify-start px-4" style={{width: '20%', height: '48px'}}>
+                            <div className="flex items-center justify-start px-4" style={{width: '20%', height: '48px', margin: 0}}>
                               <span className="text-gray-700 font-semibold">$22,000</span>
                             </div>
                           </div>
