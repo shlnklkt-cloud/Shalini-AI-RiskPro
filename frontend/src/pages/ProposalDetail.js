@@ -1097,11 +1097,9 @@ const ProposalDetail = ({ user, onLogout }) => {
                       {/* AIG */}
                       <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                         <div className="flex items-center mb-6">
-                          <img 
-                            src="https://logo.clearbit.com/aig.com" 
-                            alt="AIG" 
-                            className="h-8 w-8 object-contain mr-3"
-                          />
+                          <div className="h-8 w-8 bg-blue-600 rounded flex items-center justify-center mr-3">
+                            <span className="text-white font-bold text-sm">AIG</span>
+                          </div>
                           <h3 className="text-2xl font-bold text-gray-900">AIG</h3>
                         </div>
                         <div className="space-y-4">
