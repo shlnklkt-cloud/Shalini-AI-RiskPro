@@ -1221,9 +1221,9 @@ const ProposalDetail = ({ user, onLogout }) => {
                             <th className="text-center py-4 px-4 text-gray-700 font-semibold">
                               <div className="flex items-center justify-center gap-2">
                                 <img 
-                                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Munich_Re_logo.svg/320px-Munich_Re_logo.svg.png" 
+                                  src="https://logo.clearbit.com/munichre.com" 
                                   alt="Munich Re" 
-                                  className="h-5 object-contain"
+                                  className="h-5 w-5 object-contain"
                                 />
                                 <span>Munich Re</span>
                               </div>
