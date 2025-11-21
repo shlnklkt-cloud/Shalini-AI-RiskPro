@@ -441,18 +441,18 @@ const Dashboard = ({ user, onLogout }) => {
         </div>
 
         {/* Proposals Table */}
-        <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
-          <h2 className="text-xl font-bold text-white mb-4" data-testid="proposal-queue-title">Submission Queue</h2>
+        <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+          <h2 className="text-xl font-bold text-gray-900 mb-4" data-testid="proposal-queue-title">Submission Queue</h2>
           <div className="overflow-x-auto">
             <Table data-testid="proposals-table">
               <TableHeader>
-                <TableRow className="border-gray-700 hover:bg-gray-700/50">
-                  <TableHead className="text-gray-400">Title</TableHead>
-                  <TableHead className="text-gray-400">Client</TableHead>
-                  <TableHead className="text-gray-400">Location</TableHead>
-                  <TableHead className="text-gray-400">Priority</TableHead>
-                  <TableHead className="text-gray-400">Status</TableHead>
-                  <TableHead className="text-gray-400">Actions</TableHead>
+                <TableRow className="border-gray-200 hover:bg-gray-50">
+                  <TableHead className="text-gray-700">Property Name</TableHead>
+                  <TableHead className="text-gray-700">Client</TableHead>
+                  <TableHead className="text-gray-700">Location</TableHead>
+                  <TableHead className="text-gray-700">Priority</TableHead>
+                  <TableHead className="text-gray-700">Status</TableHead>
+                  <TableHead className="text-gray-700">Actions</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
