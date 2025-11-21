@@ -1164,9 +1164,9 @@ const ProposalDetail = ({ user, onLogout }) => {
                             <td className="py-6 px-4">
                               <div className="flex items-center">
                                 <img 
-                                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Munich_Re_logo.svg/320px-Munich_Re_logo.svg.png" 
+                                  src="https://logo.clearbit.com/munichre.com" 
                                   alt="Munich Re" 
-                                  className="h-6 object-contain mr-3"
+                                  className="h-6 w-6 object-contain mr-3"
                                 />
                                 <span className="font-semibold text-gray-900">Munich Re</span>
                               </div>
