@@ -905,8 +905,13 @@ const ProposalDetail = ({ user, onLogout }) => {
                     <p className="text-gray-600 mb-8">{proposal.title}</p>
                     
                     {/* Chart - Attachment Point Visualization */}
-                    <div className="mb-8 bg-white p-8 rounded-lg border border-gray-200">
-                      <div className="flex">
+                    <div className="mb-8 bg-white p-8 rounded-lg border border-gray-200 relative">
+                      {/* Y-axis label (rotated) */}
+                      <div className="absolute left-4 top-1/2 transform -translate-y-1/2 -rotate-90 origin-center">
+                        <span className="text-sm font-semibold text-gray-700 whitespace-nowrap">Attachment Point</span>
+                      </div>
+
+                      <div className="flex ml-12">
                         {/* Y-axis labels */}
                         <div className="flex flex-col justify-between pr-4" style={{width: '60px'}}>
                           <div className="text-sm text-gray-600 text-right">30M</div>
