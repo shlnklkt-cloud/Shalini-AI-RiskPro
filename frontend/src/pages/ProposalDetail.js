@@ -1196,14 +1196,20 @@ const ProposalDetail = ({ user, onLogout }) => {
                             <th className="text-left py-4 px-4 text-gray-700 font-semibold">Category</th>
                             <th className="text-center py-4 px-4 text-gray-700 font-semibold">
                               <div className="flex items-center justify-center">
-                                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm mr-2">A</div>
-                                Allianz
+                                <img 
+                                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Allianz_logo.svg/320px-Allianz_logo.svg.png" 
+                                  alt="Allianz" 
+                                  className="h-6 object-contain"
+                                />
                               </div>
                             </th>
                             <th className="text-center py-4 px-4 text-gray-700 font-semibold">
                               <div className="flex items-center justify-center">
-                                <div className="w-8 h-8 bg-blue-700 rounded-full flex items-center justify-center text-white font-bold text-sm mr-2">M</div>
-                                Munich Re
+                                <img 
+                                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Munich_Re_logo.svg/320px-Munich_Re_logo.svg.png" 
+                                  alt="Munich Re" 
+                                  className="h-6 object-contain"
+                                />
                               </div>
                             </th>
                             <th className="text-center py-4 px-4 text-gray-700 font-semibold">AIG</th>
