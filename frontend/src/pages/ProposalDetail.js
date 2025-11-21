@@ -483,103 +483,71 @@ const ProposalDetail = ({ user, onLogout }) => {
 
                       {/* Location Intelligence */}
                       <div>
-                        <h2 className="text-3xl font-bold text-gray-900 mb-6">Location Intelligence & Risk Mapping</h2>
-                        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-lg border-2 border-blue-200 overflow-hidden">
-                          {/* Map Header */}
-                          <div className="bg-blue-600 text-white p-4 flex items-center justify-between">
-                            <div className="flex items-center gap-3">
-                              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                              </svg>
-                              <div>
-                                <p className="font-bold text-lg">{proposal.location}</p>
-                                <p className="text-blue-100 text-sm">Property Location Coordinates</p>
-                              </div>
-                            </div>
-                            <div className="bg-white/20 px-4 py-2 rounded">
-                              <p className="text-xs">Risk Zone</p>
-                              <p className="font-bold">Moderate</p>
-                            </div>
-                          </div>
-
-                          {/* Map Visualization */}
-                          <div className="relative h-96 bg-white p-6">
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              {/* Simplified map with location marker */}
-                              <div className="relative w-full h-full">
-                                {/* Grid background */}
-                                <div className="absolute inset-0" style={{
-                                  backgroundImage: 'linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)',
-                                  backgroundSize: '40px 40px'
-                                }}></div>
-                                
-                                {/* Location Marker */}
-                                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                  <div className="relative">
-                                    {/* Pulsing circle */}
-                                    <div className="absolute inset-0 bg-red-500 rounded-full animate-ping opacity-75" style={{width: '80px', height: '80px', marginLeft: '-40px', marginTop: '-40px'}}></div>
-                                    
-                                    {/* Main marker */}
-                                    <svg className="w-20 h-20 text-red-600 relative z-10" fill="currentColor" viewBox="0 0 24 24" style={{filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.3))'}}>
-                                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                                    </svg>
-                                  </div>
-                                  
-                                  {/* Location label */}
-                                  <div className="absolute top-24 left-1/2 transform -translate-x-1/2 bg-white px-4 py-2 rounded-lg shadow-lg border-2 border-blue-500">
-                                    <p className="font-bold text-gray-900 text-center whitespace-nowrap">{proposal.title}</p>
-                                    <p className="text-sm text-gray-600 text-center">{proposal.location}</p>
-                                  </div>
-                                </div>
-
-                                {/* Risk zones indicators */}
-                                <div className="absolute top-4 left-4 bg-white p-3 rounded-lg shadow-md">
-                                  <p className="text-xs font-semibold text-gray-700 mb-2">Risk Zones</p>
-                                  <div className="space-y-1">
-                                    <div className="flex items-center gap-2">
-                                      <div className="w-4 h-4 bg-red-500 rounded"></div>
-                                      <span className="text-xs text-gray-600">High Risk</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                      <div className="w-4 h-4 bg-orange-400 rounded"></div>
-                                      <span className="text-xs text-gray-600">Moderate Risk</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                      <div className="w-4 h-4 bg-green-400 rounded"></div>
-                                      <span className="text-xs text-gray-600">Low Risk</span>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                {/* Coordinates */}
-                                <div className="absolute bottom-4 right-4 bg-white p-3 rounded-lg shadow-md">
-                                  <p className="text-xs font-semibold text-gray-700">Coordinates</p>
-                                  <p className="text-sm text-gray-900 font-mono">41.8781° N, 87.6298° W</p>
-                                </div>
-                              </div>
+                        <div className="bg-gradient-to-r from-purple-600 to-purple-700 text-white p-6 rounded-t-lg flex items-center gap-3">
+                          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <h2 className="text-3xl font-bold">Location Intelligence & Risk Mapping</h2>
+                        </div>
+                        
+                        <div className="bg-white rounded-b-lg overflow-hidden border border-gray-200">
+                          {/* Embedded Map */}
+                          <div className="relative h-96 bg-gray-100">
+                            <iframe
+                              width="100%"
+                              height="100%"
+                              frameBorder="0"
+                              scrolling="no"
+                              marginHeight="0"
+                              marginWidth="0"
+                              src="https://www.openstreetmap.org/export/embed.html?bbox=-87.64,-41.89,-87.62,-41.87&layer=mapnik&marker=41.8796,-87.632"
+                              style={{border: 0}}
+                              title="Location Map"
+                            ></iframe>
+                            <div className="absolute bottom-2 right-2 bg-white px-2 py-1 rounded text-xs text-gray-600">
+                              <a href="https://www.openstreetmap.org/?mlat=41.8796&mlon=-87.632#map=15/41.8796/-87.632" target="_blank" rel="noopener noreferrer">
+                                © OpenStreetMap contributors
+                              </a>
                             </div>
                           </div>
 
-                          {/* Map footer with additional info */}
-                          <div className="bg-gray-50 p-4 border-t border-gray-200">
-                            <div className="grid grid-cols-4 gap-4 text-center">
-                              <div>
-                                <p className="text-xs text-gray-600">Flood Zone</p>
-                                <p className="font-bold text-blue-600">Zone A</p>
-                              </div>
-                              <div>
-                                <p className="text-xs text-gray-600">Seismic Zone</p>
-                                <p className="font-bold text-orange-600">Zone 2</p>
-                              </div>
-                              <div>
-                                <p className="text-xs text-gray-600">Wind Zone</p>
-                                <p className="font-bold text-purple-600">Zone 3</p>
-                              </div>
-                              <div>
-                                <p className="text-xs text-gray-600">Fire Zone</p>
-                                <p className="font-bold text-green-600">Zone 1</p>
-                              </div>
+                          {/* Location Details Grid */}
+                          <div className="grid grid-cols-4 gap-6 p-6 bg-gray-50">
+                            <div>
+                              <p className="text-xs text-gray-500 uppercase mb-1">Address</p>
+                              <p className="text-base font-semibold text-gray-900">151 W Adams St</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500 uppercase mb-1">Latitude</p>
+                              <p className="text-base font-semibold text-gray-900">41.879600</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500 uppercase mb-1">Longitude</p>
+                              <p className="text-base font-semibold text-gray-900">-87.632000</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500 uppercase mb-1">Precision</p>
+                              <p className="text-base font-semibold text-gray-900">Rooftop</p>
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-4 gap-6 p-6 pt-0 bg-gray-50">
+                            <div>
+                              <p className="text-xs text-gray-500 uppercase mb-1">City</p>
+                              <p className="text-base font-semibold text-gray-900">Chicago</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500 uppercase mb-1">State</p>
+                              <p className="text-base font-semibold text-gray-900">IL</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500 uppercase mb-1">Nearest Hazard</p>
+                              <p className="text-base font-semibold text-orange-600">0.3 mi</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500 uppercase mb-1">Address Validated</p>
+                              <p className="text-base font-semibold text-green-600">98.5%</p>
                             </div>
                           </div>
                         </div>
