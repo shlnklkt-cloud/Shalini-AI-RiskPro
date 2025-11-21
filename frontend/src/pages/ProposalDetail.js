@@ -1220,7 +1220,15 @@ const ProposalDetail = ({ user, onLogout }) => {
                                 />
                               </div>
                             </th>
-                            <th className="text-center py-4 px-4 text-gray-700 font-semibold">AIG</th>
+                            <th className="text-center py-4 px-4 text-gray-700 font-semibold">
+                              <div className="flex items-center justify-center">
+                                <img 
+                                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/AIG_logo.svg/320px-AIG_logo.svg.png" 
+                                  alt="AIG" 
+                                  className="h-6 object-contain"
+                                />
+                              </div>
+                            </th>
                           </tr>
                         </thead>
                         <tbody>
