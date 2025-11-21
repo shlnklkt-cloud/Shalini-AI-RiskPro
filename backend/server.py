@@ -238,11 +238,16 @@ async def get_statistics():
 # ============= SEED DATA =============
 
 @api_router.post("/seed")
-async def seed_database():
+async def seed_database(force: bool = False):
     # Check if data already exists
     existing_users = await db.users.count_documents({})
-    if existing_users > 0:
-        return {"message": "Database already seeded"}
+    if existing_users > 0 and not force:
+        return {"message": "Database already seeded, use force=true to reseed"}
+    
+    # Clear existing data if force is true
+    if force:
+        await db.users.delete_many({})
+        await db.proposals.delete_many({})
     
     # Create default user
     user = {
