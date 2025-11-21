@@ -1030,11 +1030,6 @@ const ProposalDetail = ({ user, onLogout }) => {
                           </div>
                         </div>
                       </div>
-
-                      {/* Y-axis label (rotated) */}
-                      <div className="absolute left-2 top-1/2 transform -translate-y-1/2 -rotate-90">
-                        <span className="text-sm font-semibold text-gray-700">Attachment Point</span>
-                      </div>
                     </div>
 
                     {/* Provider Cards */}
