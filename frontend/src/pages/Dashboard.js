@@ -395,7 +395,7 @@ const Dashboard = ({ user, onLogout }) => {
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <Input
-                placeholder="Search proposals..."
+                placeholder="Search Submission..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 bg-gray-700 border-gray-600 text-white"
@@ -419,7 +419,7 @@ const Dashboard = ({ user, onLogout }) => {
               onClick={() => setActiveTab('to_do')}
               data-testid="filter-todo"
             >
-              To Do
+              Pending Submission
             </Button>
             <Button
               variant={activeTab === 'in_process' ? 'default' : 'outline'}
@@ -442,7 +442,7 @@ const Dashboard = ({ user, onLogout }) => {
 
         {/* Proposals Table */}
         <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
-          <h2 className="text-xl font-bold text-white mb-4" data-testid="proposal-queue-title">Proposal Queue</h2>
+          <h2 className="text-xl font-bold text-white mb-4" data-testid="proposal-queue-title">Submission Queue</h2>
           <div className="overflow-x-auto">
             <Table data-testid="proposals-table">
               <TableHeader>
