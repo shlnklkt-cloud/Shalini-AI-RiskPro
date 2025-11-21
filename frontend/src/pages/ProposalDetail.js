@@ -64,7 +64,7 @@ const ProposalDetail = ({ user, onLogout }) => {
 
   const getStatusLabel = (status) => {
     switch(status) {
-      case 'to_do': return 'To Do';
+      case 'to_do': return 'Pending Submission';
       case 'in_process': return 'In Process';
       case 'completed': return 'Completed';
       default: return status;
