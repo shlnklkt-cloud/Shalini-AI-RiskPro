@@ -174,10 +174,10 @@ const Dashboard = ({ user, onLogout }) => {
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2" data-testid="dashboard-title">Broker Dashboard</h1>
+            <h1 className="text-3xl font-bold text-white mb-2" data-testid="dashboard-title">Property Underwriting</h1>
             <div className="flex items-center gap-3">
               <Avatar className="h-10 w-10">
-                <AvatarImage src={user?.avatar} />
+                <AvatarImage src="https://avatar.iran.liara.run/public/girl?username=Lara" />
                 <AvatarFallback>{user?.fullName?.[0]}</AvatarFallback>
               </Avatar>
               <p className="text-gray-400" data-testid="welcome-message">Welcome back, <span className="text-white font-semibold">{user?.fullName}</span></p>
