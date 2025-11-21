@@ -492,23 +492,23 @@ const ProposalDetail = ({ user, onLogout }) => {
                         </div>
                         
                         <div className="bg-white rounded-b-lg overflow-hidden border border-gray-200">
-                          {/* Embedded Map */}
+                          {/* Embedded Google Maps with Satellite View */}
                           <div className="relative h-96 bg-gray-100">
                             <iframe
                               width="100%"
                               height="100%"
                               frameBorder="0"
-                              scrolling="no"
-                              marginHeight="0"
-                              marginWidth="0"
-                              src="https://www.openstreetmap.org/export/embed.html?bbox=-87.64,-41.89,-87.62,-41.87&layer=mapnik&marker=41.8796,-87.632"
                               style={{border: 0}}
-                              title="Location Map"
+                              referrerPolicy="no-referrer-when-downgrade"
+                              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=JW+Marriott+Chicago&center=41.8796,-87.632&zoom=19&maptype=satellite"
+                              allowFullScreen
+                              title="Property Location Map"
                             ></iframe>
-                            <div className="absolute bottom-2 right-2 bg-white px-2 py-1 rounded text-xs text-gray-600">
-                              <a href="https://www.openstreetmap.org/?mlat=41.8796&mlon=-87.632#map=15/41.8796/-87.632" target="_blank" rel="noopener noreferrer">
-                                © OpenStreetMap contributors
-                              </a>
+                            {/* Red marker overlay to indicate exact location */}
+                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                              <svg className="w-12 h-12 text-red-600 drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                              </svg>
                             </div>
                           </div>
 
