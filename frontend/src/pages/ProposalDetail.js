@@ -535,14 +535,6 @@ const ProposalDetail = ({ user, onLogout }) => {
                               <p className="text-xs text-gray-500 uppercase mb-1">State</p>
                               <p className="text-base font-semibold text-gray-900">IL</p>
                             </div>
-                            <div>
-                              <p className="text-xs text-gray-500 uppercase mb-1">Nearest Hazard</p>
-                              <p className="text-base font-semibold text-orange-600">0.3 mi</p>
-                            </div>
-                            <div>
-                              <p className="text-xs text-gray-500 uppercase mb-1">Address Validated</p>
-                              <p className="text-base font-semibold text-green-600">98.5%</p>
-                            </div>
                           </div>
                         </div>
                       </div>
