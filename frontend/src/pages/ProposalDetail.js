@@ -1175,7 +1175,11 @@ const ProposalDetail = ({ user, onLogout }) => {
                           <tr className="hover:bg-gray-50">
                             <td className="py-6 px-4">
                               <div className="flex items-center">
-                                <span className="font-semibold text-gray-900 ml-13">AIG</span>
+                                <img 
+                                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/AIG_logo.svg/320px-AIG_logo.svg.png" 
+                                  alt="AIG" 
+                                  className="h-8 object-contain"
+                                />
                               </div>
                             </td>
                             <td className="text-right py-6 px-4 text-gray-900 font-semibold">$2,780,000</td>
