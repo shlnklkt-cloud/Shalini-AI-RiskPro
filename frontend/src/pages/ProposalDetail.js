@@ -846,86 +846,105 @@ const ProposalDetail = ({ user, onLogout }) => {
                     <h2 className="text-3xl font-serif text-gray-900 mb-2">Quote Comparison</h2>
                     <p className="text-gray-600 mb-8">{proposal.title}</p>
                     
-                    {/* Chart */}
-                    <div className="mb-8 bg-gray-50 p-8 rounded-lg">
-                      <div className="space-y-6">
+                    {/* Chart - Attachment Point Visualization */}
+                    <div className="mb-8 bg-white p-8 rounded-lg border border-gray-200">
+                      <div className="space-y-1">
                         {/* Liberty Mutual */}
-                        <div>
-                          <div className="flex justify-between mb-2">
-                            <span className="text-base font-semibold text-gray-800">Liberty Mutual (80%)</span>
-                            <span className="text-base font-semibold text-gray-800">$23,000</span>
-                          </div>
-                          <div className="w-full bg-gray-200 rounded-md h-14 flex items-center overflow-hidden">
-                            <div className="bg-gradient-to-r from-blue-900 to-blue-800 h-14 rounded-md flex items-center justify-center text-white font-bold text-lg shadow-md" style={{width: '80%'}}>
-                              $23,000
+                        <div className="flex items-center h-16">
+                          <div className="w-full flex">
+                            <div className="bg-blue-900 flex items-center justify-center text-white font-semibold px-4" style={{width: '10%', height: '48px'}}>
+                              <span className="text-sm">Liberty Mutual (80%)</span>
+                            </div>
+                            <div className="bg-cyan-400 flex items-center justify-center text-white font-bold px-4" style={{width: '50%', height: '48px'}}>
+                              <span>Zurich (100%)</span>
+                            </div>
+                            <div className="flex items-center justify-start px-4" style={{width: '40%', height: '48px'}}>
+                              <span className="text-gray-700 font-semibold">$23,000</span>
                             </div>
                           </div>
                         </div>
 
                         {/* Munich Re */}
-                        <div>
-                          <div className="flex justify-between mb-2">
-                            <span className="text-base font-semibold text-gray-800">Munich Re (40%)</span>
-                            <span className="text-base font-semibold text-gray-800">$27,000</span>
-                          </div>
-                          <div className="w-full bg-gray-200 rounded-md h-14 flex items-center overflow-hidden">
-                            <div className="bg-gradient-to-r from-blue-600 to-blue-500 h-14 rounded-md flex items-center justify-center text-white font-bold text-lg shadow-md" style={{width: '40%'}}>
-                              $27,000
+                        <div className="flex items-center h-16">
+                          <div className="w-full flex">
+                            <div className="bg-blue-700 flex items-center justify-center text-white font-semibold px-4" style={{width: '20%', height: '48px'}}>
+                              <span className="text-sm">Munich Re (40%)</span>
+                            </div>
+                            <div className="bg-purple-500 flex items-center justify-center text-white font-bold px-4" style={{width: '60%', height: '48px'}}>
+                              <span>AIG (80%)</span>
+                            </div>
+                            <div className="flex items-center justify-start px-4" style={{width: '20%', height: '48px'}}>
+                              <span className="text-gray-700 font-semibold">$27,000</span>
                             </div>
                           </div>
                         </div>
 
                         {/* Chubb */}
-                        <div>
-                          <div className="flex justify-between mb-2">
-                            <span className="text-base font-semibold text-gray-800">Chubb (70%)</span>
-                            <span className="text-base font-semibold text-gray-800">$24,000</span>
-                          </div>
-                          <div className="w-full bg-gray-200 rounded-md h-14 flex items-center overflow-hidden">
-                            <div className="bg-gradient-to-r from-purple-600 to-purple-500 h-14 rounded-md flex items-center justify-center text-white font-bold text-lg shadow-md" style={{width: '70%'}}>
-                              $24,000
+                        <div className="flex items-center h-16">
+                          <div className="w-full flex">
+                            <div className="bg-purple-600 flex items-center justify-center text-white font-semibold px-4" style={{width: '25%', height: '48px'}}>
+                              <span className="text-sm">Chubb (70%)</span>
+                            </div>
+                            <div className="flex items-center justify-start px-4" style={{width: '75%', height: '48px'}}>
+                              <span className="text-gray-700 font-semibold">$24,000</span>
                             </div>
                           </div>
                         </div>
 
                         {/* Allianz */}
-                        <div>
-                          <div className="flex justify-between mb-2">
-                            <span className="text-base font-semibold text-gray-800">Allianz (50%)</span>
-                            <span className="text-base font-semibold text-gray-800">$28,000</span>
-                          </div>
-                          <div className="w-full bg-gray-200 rounded-md h-14 flex items-center overflow-hidden">
-                            <div className="bg-gradient-to-r from-indigo-600 to-indigo-500 h-14 rounded-md flex items-center justify-center text-white font-bold text-lg shadow-md" style={{width: '50%'}}>
-                              $28,000
+                        <div className="flex items-center h-16">
+                          <div className="w-full flex">
+                            <div className="bg-indigo-700 flex items-center justify-center text-white font-semibold px-4" style={{width: '30%', height: '48px'}}>
+                              <span className="text-sm">Allianz (50%)</span>
+                            </div>
+                            <div className="flex items-center justify-start px-4" style={{width: '70%', height: '48px'}}>
+                              <span className="text-gray-700 font-semibold">$28,000</span>
                             </div>
                           </div>
                         </div>
 
                         {/* Zurich */}
-                        <div>
-                          <div className="flex justify-between mb-2">
-                            <span className="text-base font-semibold text-gray-800">Zurich (20%)</span>
-                            <span className="text-base font-semibold text-gray-800">$26,000</span>
-                          </div>
-                          <div className="w-full bg-gray-200 rounded-md h-14 flex items-center overflow-hidden">
-                            <div className="bg-gradient-to-r from-cyan-400 to-cyan-300 h-14 rounded-md flex items-center justify-center text-white font-bold text-lg shadow-md" style={{width: '20%'}}>
-                              $26,000
+                        <div className="flex items-center h-16">
+                          <div className="w-full flex">
+                            <div className="bg-blue-900 flex items-center justify-center text-white font-semibold px-4" style={{width: '10%', height: '48px'}}>
+                              <span className="text-sm">Liberty Mutual (80%)</span>
+                            </div>
+                            <div className="bg-cyan-400 flex items-center justify-center text-white font-bold px-4" style={{width: '50%', height: '48px'}}>
+                              <span>Zurich (20%)</span>
+                            </div>
+                            <div className="flex items-center justify-start px-4" style={{width: '40%', height: '48px'}}>
+                              <span className="text-gray-700 font-semibold">$26,000</span>
                             </div>
                           </div>
                         </div>
 
                         {/* AIG */}
-                        <div>
-                          <div className="flex justify-between mb-2">
-                            <span className="text-base font-semibold text-gray-800">AIG (80%)</span>
-                            <span className="text-base font-semibold text-gray-800">$22,000</span>
-                          </div>
-                          <div className="w-full bg-gray-200 rounded-md h-14 flex items-center overflow-hidden">
-                            <div className="bg-gradient-to-r from-purple-500 to-purple-400 h-14 rounded-md flex items-center justify-center text-white font-bold text-lg shadow-md" style={{width: '80%'}}>
-                              $22,000
+                        <div className="flex items-center h-16">
+                          <div className="w-full flex">
+                            <div className="bg-blue-700 flex items-center justify-center text-white font-semibold px-4" style={{width: '20%', height: '48px'}}>
+                              <span className="text-sm">Munich Re (40%)</span>
+                            </div>
+                            <div className="bg-purple-500 flex items-center justify-center text-white font-bold px-4" style={{width: '60%', height: '48px'}}>
+                              <span>AIG (80%)</span>
+                            </div>
+                            <div className="flex items-center justify-start px-4" style={{width: '20%', height: '48px'}}>
+                              <span className="text-gray-700 font-semibold">$22,000</span>
                             </div>
                           </div>
                         </div>
+                      </div>
+
+                      {/* Y-axis labels */}
+                      <div className="flex justify-between mt-4 px-2">
+                        <span className="text-sm text-gray-600">0</span>
+                        <span className="text-sm text-gray-600">20%</span>
+                        <span className="text-sm text-gray-600">40%</span>
+                        <span className="text-sm text-gray-600">60%</span>
+                        <span className="text-sm text-gray-600">80%</span>
+                        <span className="text-sm text-gray-600">100%</span>
+                      </div>
+                      <div className="text-center mt-2">
+                        <span className="text-sm font-semibold text-gray-700">Capacity</span>
                       </div>
                     </div>
 
