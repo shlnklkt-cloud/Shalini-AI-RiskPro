@@ -1211,9 +1211,9 @@ const ProposalDetail = ({ user, onLogout }) => {
                             <th className="text-center py-4 px-4 text-gray-700 font-semibold">
                               <div className="flex items-center justify-center gap-2">
                                 <img 
-                                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Allianz_logo.svg/320px-Allianz_logo.svg.png" 
+                                  src="https://logo.clearbit.com/allianz.com" 
                                   alt="Allianz" 
-                                  className="h-5 object-contain"
+                                  className="h-5 w-5 object-contain"
                                 />
                                 <span>Allianz</span>
                               </div>
