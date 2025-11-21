@@ -277,24 +277,62 @@ async def seed_database():
         }
     ]
     
-    # Add more sample proposals with varied data
-    for i in range(2, 41):
-        statuses = ["to_do", "in_process", "completed"]
-        priorities = ["high", "medium", "low"]
-        business_types = ["Hotel & Hospitality", "Retail", "Manufacturing", "Healthcare", "Technology"]
-        
+    # Add more sample proposals with real property data
+    real_properties = [
+        {"title": "Austin Commercial Center", "client": "John's Bakery", "location": "Springfield, IL", "priority": "low", "status": "completed", "businessType": "Retail", "value": "$45.0M"},
+        {"title": "Austin Office Tower", "client": "Summit Commercial Inc.", "location": "Austin, TX", "priority": "medium", "status": "completed", "businessType": "Office", "value": "$78.0M"},
+        {"title": "Austin Retail Plaza", "client": "Coastal Properties LLC Inc.", "location": "Austin, TX", "priority": "high", "status": "completed", "businessType": "Retail", "value": "$52.0M"},
+        {"title": "Boston Commercial Center", "client": "Apex Real Estate Inc.", "location": "Boston, MA", "priority": "medium", "status": "completed", "businessType": "Office", "value": "$95.0M"},
+        {"title": "Boston Retail Plaza", "client": "Horizon Investments Inc.", "location": "Boston, MA", "priority": "medium", "status": "to_do", "businessType": "Retail", "value": "$38.0M"},
+        {"title": "Charlotte Office Tower", "client": "Apex Real Estate Inc.", "location": "Charlotte, NC", "priority": "low", "status": "completed", "businessType": "Office", "value": "$62.0M"},
+        {"title": "Denver Shopping Mall", "client": "Mountain View Properties", "location": "Denver, CO", "priority": "high", "status": "in_process", "businessType": "Retail", "value": "$120.0M"},
+        {"title": "Miami Beach Resort", "client": "Oceanfront Hotels Group", "location": "Miami, FL", "priority": "high", "status": "in_process", "businessType": "Hotel & Hospitality", "value": "$250.0M"},
+        {"title": "Seattle Tech Campus", "client": "Pacific Northwest Tech Inc.", "location": "Seattle, WA", "priority": "medium", "status": "to_do", "businessType": "Technology", "value": "$180.0M"},
+        {"title": "Portland Industrial Park", "client": "Northwest Manufacturing", "location": "Portland, OR", "priority": "low", "status": "completed", "businessType": "Manufacturing", "value": "$65.0M"},
+        {"title": "Phoenix Medical Center", "client": "Desert Healthcare Systems", "location": "Phoenix, AZ", "priority": "high", "status": "in_process", "businessType": "Healthcare", "value": "$145.0M"},
+        {"title": "Las Vegas Convention Center", "client": "Nevada Events Corp", "location": "Las Vegas, NV", "priority": "medium", "status": "in_process", "businessType": "Entertainment", "value": "$200.0M"},
+        {"title": "Atlanta Financial Tower", "client": "Southern Banking Group", "location": "Atlanta, GA", "priority": "high", "status": "to_do", "businessType": "Finance", "value": "$165.0M"},
+        {"title": "San Francisco Tech Hub", "client": "Bay Area Ventures LLC", "location": "San Francisco, CA", "priority": "high", "status": "in_process", "businessType": "Technology", "value": "$320.0M"},
+        {"title": "Houston Energy Complex", "client": "Texas Energy Holdings", "location": "Houston, TX", "priority": "medium", "status": "completed", "businessType": "Energy", "value": "$275.0M"},
+        {"title": "Detroit Manufacturing Plant", "client": "Great Lakes Industrial", "location": "Detroit, MI", "priority": "low", "status": "to_do", "businessType": "Manufacturing", "value": "$85.0M"},
+        {"title": "Philadelphia Historic Building", "client": "Liberty Properties Inc.", "location": "Philadelphia, PA", "priority": "medium", "status": "completed", "businessType": "Office", "value": "$72.0M"},
+        {"title": "Nashville Music Hall", "client": "Tennessee Entertainment LLC", "location": "Nashville, TN", "priority": "low", "status": "completed", "businessType": "Entertainment", "value": "$48.0M"},
+        {"title": "Minneapolis Corporate Center", "client": "Twin Cities Realty", "location": "Minneapolis, MN", "priority": "medium", "status": "in_process", "businessType": "Office", "value": "$98.0M"},
+        {"title": "San Diego Coastal Resort", "client": "Pacific Beachfront Hotels", "location": "San Diego, CA", "priority": "high", "status": "in_process", "businessType": "Hotel & Hospitality", "value": "$195.0M"},
+        {"title": "New Orleans Convention Hotel", "client": "Crescent City Hospitality", "location": "New Orleans, LA", "priority": "medium", "status": "to_do", "businessType": "Hotel & Hospitality", "value": "$125.0M"},
+        {"title": "Pittsburgh Innovation Center", "client": "Steel City Ventures", "location": "Pittsburgh, PA", "priority": "low", "status": "completed", "businessType": "Technology", "value": "$78.0M"},
+        {"title": "Indianapolis Distribution Hub", "client": "Midwest Logistics Corp", "location": "Indianapolis, IN", "priority": "medium", "status": "in_process", "businessType": "Logistics", "value": "$92.0M"},
+        {"title": "Tampa Bay Medical Plaza", "client": "Florida Healthcare Partners", "location": "Tampa, FL", "priority": "high", "status": "to_do", "businessType": "Healthcare", "value": "$115.0M"},
+        {"title": "Kansas City Business Park", "client": "Heartland Commercial Group", "location": "Kansas City, MO", "priority": "low", "status": "completed", "businessType": "Office", "value": "$68.0M"},
+        {"title": "Salt Lake City Ski Resort", "client": "Mountain Peak Resorts Inc.", "location": "Salt Lake City, UT", "priority": "high", "status": "in_process", "businessType": "Hotel & Hospitality", "value": "$155.0M"},
+        {"title": "Raleigh Research Facility", "client": "Triangle Innovation Partners", "location": "Raleigh, NC", "priority": "medium", "status": "completed", "businessType": "Technology", "value": "$88.0M"},
+        {"title": "Milwaukee Brewery Complex", "client": "Great Lakes Brewing Co", "location": "Milwaukee, WI", "priority": "low", "status": "to_do", "businessType": "Manufacturing", "value": "$42.0M"},
+        {"title": "Richmond Historic District", "client": "Virginia Heritage Properties", "location": "Richmond, VA", "priority": "medium", "status": "in_process", "businessType": "Mixed Use", "value": "$105.0M"},
+        {"title": "Oklahoma City Energy Tower", "client": "Plains Petroleum Group", "location": "Oklahoma City, OK", "priority": "high", "status": "completed", "businessType": "Energy", "value": "$132.0M"},
+        {"title": "Louisville Distribution Center", "client": "Kentucky Commerce Holdings", "location": "Louisville, KY", "priority": "medium", "status": "to_do", "businessType": "Logistics", "value": "$75.0M"},
+        {"title": "Tucson Desert Plaza", "client": "Southwest Retail Partners", "location": "Tucson, AZ", "priority": "low", "status": "completed", "businessType": "Retail", "value": "$55.0M"},
+        {"title": "Albuquerque Tech Park", "client": "Rio Grande Innovation LLC", "location": "Albuquerque, NM", "priority": "medium", "status": "in_process", "businessType": "Technology", "value": "$82.0M"},
+        {"title": "Buffalo Industrial Complex", "client": "Great Lakes Manufacturing", "location": "Buffalo, NY", "priority": "low", "status": "completed", "businessType": "Manufacturing", "value": "$58.0M"},
+        {"title": "Fresno Agricultural Center", "client": "Central Valley Agribusiness", "location": "Fresno, CA", "priority": "medium", "status": "to_do", "businessType": "Agriculture", "value": "$48.0M"},
+        {"title": "Omaha Financial Plaza", "client": "Midwest Banking Corporation", "location": "Omaha, NE", "priority": "high", "status": "in_process", "businessType": "Finance", "value": "$128.0M"},
+        {"title": "Boise Tech Campus", "client": "Mountain West Technology", "location": "Boise, ID", "priority": "medium", "status": "completed", "businessType": "Technology", "value": "$95.0M"},
+        {"title": "Charleston Historic Inn", "client": "Lowcountry Hospitality Group", "location": "Charleston, SC", "priority": "high", "status": "to_do", "businessType": "Hotel & Hospitality", "value": "$112.0M"},
+        {"title": "Spokane Medical Complex", "client": "Inland Northwest Healthcare", "location": "Spokane, WA", "priority": "medium", "status": "in_process", "businessType": "Healthcare", "value": "$98.0M"},
+    ]
+    
+    for i, prop_data in enumerate(real_properties, start=2):
         proposal = {
             "id": f"prop-{str(i).zfill(3)}",
-            "title": f"Property {i}",
-            "client": f"Client {i} Inc.",
-            "location": f"City {i}, State",
-            "priority": priorities[i % 3],
-            "status": statuses[i % 3],
+            "title": prop_data["title"],
+            "client": prop_data["client"],
+            "location": prop_data["location"],
+            "priority": prop_data["priority"],
+            "status": prop_data["status"],
             "clientId": f"CLT-{uuid.uuid4().hex[:8].upper()}",
-            "firstNameInsured": f"Person {i}",
-            "businessType": business_types[i % 5],
-            "totalInsuredValue": f"${i * 5}.0M",
-            "website": f"www.client{i}.com",
+            "firstNameInsured": prop_data["client"].split()[0],
+            "businessType": prop_data["businessType"],
+            "totalInsuredValue": prop_data["value"],
+            "website": f"www.{prop_data['client'].lower().replace(' ', '').replace('.', '').replace(',', '')[:15]}.com",
             "createdBy": "LARA",
             "effectiveDate": f"10/{(i % 28) + 1}/2025",
             "expirationDate": f"12/{(i % 28) + 1}/2025",
