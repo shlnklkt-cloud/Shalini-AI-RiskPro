@@ -799,165 +799,367 @@ const ProposalDetail = ({ user, onLogout }) => {
 
         {activeTab === 'quote' && (
           <div className="space-y-6" data-testid="quote-comparison-content">
-            <h2 className="text-2xl font-bold text-white mb-6">Insurance Quote Comparison</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Quote 1 */}
-              <Card className="bg-gray-800 border-gray-700">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-bold text-white">Provider A</h3>
-                    <Badge className="bg-green-500/20 text-green-400 border-green-500/30">Recommended</Badge>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <div>
-                      <p className="text-gray-400 text-sm">Annual Premium</p>
-                      <p className="text-2xl font-bold text-white">$125,000</p>
-                    </div>
-                    
-                    <div>
-                      <p className="text-gray-400 text-sm">Coverage Limit</p>
-                      <p className="text-white font-semibold">{proposal.totalInsuredValue}</p>
-                    </div>
-                    
-                    <div>
-                      <p className="text-gray-400 text-sm">Deductible</p>
-                      <p className="text-white font-semibold">$25,000</p>
-                    </div>
-                    
-                    <div className="pt-4 border-t border-gray-700">
-                      <p className="text-gray-400 text-sm mb-2">Key Features</p>
-                      <ul className="text-sm text-gray-300 space-y-1">
-                        <li>✓ Comprehensive coverage</li>
-                        <li>✓ 24/7 claim support</li>
-                        <li>✓ Business interruption</li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700" data-testid="select-quote-a">
-                    Select Quote
-                  </Button>
-                </CardContent>
-              </Card>
+            <div className="bg-white rounded-lg">
+              <div className="p-8">
+                <h1 className="text-5xl font-serif text-gray-900 mb-2">Quote Comparison Dashboard</h1>
+                <p className="text-gray-600 text-lg">Multi-Carrier Quote Comparison - {proposal.title}</p>
+              </div>
 
-              {/* Quote 2 */}
-              <Card className="bg-gray-800 border-gray-700">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-bold text-white">Provider B</h3>
+              {/* Tabs */}
+              <div className="border-t border-gray-200">
+                <Tabs defaultValue="chart" className="w-full">
+                  <div className="flex border-b border-gray-200 px-8">
+                    <TabsList className="bg-transparent h-auto p-0 space-x-8">
+                      <TabsTrigger 
+                        value="chart" 
+                        className="bg-transparent border-b-2 border-transparent data-[state=active]:border-blue-600 rounded-none px-0 pb-4 pt-4 text-gray-600 data-[state=active]:text-blue-600 data-[state=active]:shadow-none"
+                        data-testid="chart-comparison-tab"
+                      >
+                        <BarChart3 className="h-5 w-5 mr-2" />
+                        Chart Comparison
+                      </TabsTrigger>
+                      <TabsTrigger 
+                        value="financial" 
+                        className="bg-transparent border-b-2 border-transparent data-[state=active]:border-blue-600 rounded-none px-0 pb-4 pt-4 text-gray-600 data-[state=active]:text-blue-600 data-[state=active]:shadow-none"
+                        data-testid="financial-overview-tab"
+                      >
+                        <svg className="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Financial Overview
+                      </TabsTrigger>
+                      <TabsTrigger 
+                        value="limits" 
+                        className="bg-transparent border-b-2 border-transparent data-[state=active]:border-blue-600 rounded-none px-0 pb-4 pt-4 text-gray-600 data-[state=active]:text-blue-600 data-[state=active]:shadow-none"
+                        data-testid="limits-liabilities-tab"
+                      >
+                        <svg className="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        Limits of Liabilities
+                      </TabsTrigger>
+                    </TabsList>
                   </div>
-                  
-                  <div className="space-y-4">
-                    <div>
-                      <p className="text-gray-400 text-sm">Annual Premium</p>
-                      <p className="text-2xl font-bold text-white">$142,500</p>
-                    </div>
-                    
-                    <div>
-                      <p className="text-gray-400 text-sm">Coverage Limit</p>
-                      <p className="text-white font-semibold">{proposal.totalInsuredValue}</p>
-                    </div>
-                    
-                    <div>
-                      <p className="text-gray-400 text-sm">Deductible</p>
-                      <p className="text-white font-semibold">$15,000</p>
-                    </div>
-                    
-                    <div className="pt-4 border-t border-gray-700">
-                      <p className="text-gray-400 text-sm mb-2">Key Features</p>
-                      <ul className="text-sm text-gray-300 space-y-1">
-                        <li>✓ Premium coverage</li>
-                        <li>✓ Lower deductible</li>
-                        <li>✓ Extended protection</li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700" data-testid="select-quote-b">
-                    Select Quote
-                  </Button>
-                </CardContent>
-              </Card>
 
-              {/* Quote 3 */}
-              <Card className="bg-gray-800 border-gray-700">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-bold text-white">Provider C</h3>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <div>
-                      <p className="text-gray-400 text-sm">Annual Premium</p>
-                      <p className="text-2xl font-bold text-white">$108,750</p>
-                    </div>
+                  {/* Chart Comparison Tab */}
+                  <TabsContent value="chart" className="p-8 mt-0">
+                    <h2 className="text-3xl font-serif text-gray-900 mb-2">Quote Comparison</h2>
+                    <p className="text-gray-600 mb-8">{proposal.title}</p>
                     
-                    <div>
-                      <p className="text-gray-400 text-sm">Coverage Limit</p>
-                      <p className="text-white font-semibold">{proposal.totalInsuredValue}</p>
+                    {/* Chart */}
+                    <div className="mb-8 bg-gray-50 p-8 rounded-lg">
+                      <div className="space-y-4">
+                        {/* Liberty Mutual */}
+                        <div>
+                          <div className="flex justify-between mb-2">
+                            <span className="text-sm font-semibold text-gray-700">Liberty Mutual (80%)</span>
+                            <span className="text-sm font-semibold text-gray-700">$23,000</span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-12 flex items-center">
+                            <div className="bg-blue-900 h-12 rounded-full flex items-center justify-center text-white font-bold" style={{width: '23%'}}>
+                              $23,000
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Munich Re */}
+                        <div>
+                          <div className="flex justify-between mb-2">
+                            <span className="text-sm font-semibold text-gray-700">Munich Re (40%)</span>
+                            <span className="text-sm font-semibold text-gray-700">$27,000</span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-12 flex items-center">
+                            <div className="bg-blue-700 h-12 rounded-full flex items-center justify-center text-white font-bold" style={{width: '27%'}}>
+                              $27,000
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Chubb */}
+                        <div>
+                          <div className="flex justify-between mb-2">
+                            <span className="text-sm font-semibold text-gray-700">Chubb (70%)</span>
+                            <span className="text-sm font-semibold text-gray-700">$24,000</span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-12 flex items-center">
+                            <div className="bg-purple-600 h-12 rounded-full flex items-center justify-center text-white font-bold" style={{width: '53%'}}>
+                              $24,000
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Allianz */}
+                        <div>
+                          <div className="flex justify-between mb-2">
+                            <span className="text-sm font-semibold text-gray-700">Allianz (50%)</span>
+                            <span className="text-sm font-semibold text-gray-700">$28,000</span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-12 flex items-center">
+                            <div className="bg-blue-800 h-12 rounded-full flex items-center justify-center text-white font-bold" style={{width: '42%'}}>
+                              $28,000
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Zurich */}
+                        <div>
+                          <div className="flex justify-between mb-2">
+                            <span className="text-sm font-semibold text-gray-700">Zurich (20%)</span>
+                            <span className="text-sm font-semibold text-gray-700">$26,000</span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-12 flex items-center">
+                            <div className="bg-cyan-400 h-12 rounded-full flex items-center justify-center text-white font-bold" style={{width: '33%'}}>
+                              $26,000
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* AIG */}
+                        <div>
+                          <div className="flex justify-between mb-2">
+                            <span className="text-sm font-semibold text-gray-700">AIG (80%)</span>
+                            <span className="text-sm font-semibold text-gray-700">$22,000</span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-12 flex items-center">
+                            <div className="bg-purple-500 h-12 rounded-full flex items-center justify-center text-white font-bold" style={{width: '90%'}}>
+                              $22,000
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+
+                    {/* Provider Cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {/* Allianz */}
+                      <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                        <div className="flex items-center mb-6">
+                          <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">
+                            A
+                          </div>
+                          <h3 className="text-2xl font-bold text-gray-900">Allianz</h3>
+                        </div>
+                        <div className="space-y-4">
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Premium:</span>
+                            <span className="text-2xl font-bold text-blue-600">$2.95M</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Limit:</span>
+                            <span className="text-lg font-semibold text-gray-900">$85M</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Commission:</span>
+                            <span className="text-lg font-semibold text-green-600">15%</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Capacity:</span>
+                            <span className="text-lg font-semibold text-purple-600">$85M</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Munich Re */}
+                      <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                        <div className="flex items-center mb-6">
+                          <div className="w-12 h-12 bg-blue-700 rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">
+                            M
+                          </div>
+                          <h3 className="text-2xl font-bold text-gray-900">Munich Re</h3>
+                        </div>
+                        <div className="space-y-4">
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Premium:</span>
+                            <span className="text-2xl font-bold text-blue-600">$2.99M</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Limit:</span>
+                            <span className="text-lg font-semibold text-gray-900">$90M</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Commission:</span>
+                            <span className="text-lg font-semibold text-green-600">14.5%</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Capacity:</span>
+                            <span className="text-lg font-semibold text-purple-600">$90M</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* AIG */}
+                      <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                        <div className="flex items-center mb-6">
+                          <h3 className="text-2xl font-bold text-gray-900">AIG</h3>
+                        </div>
+                        <div className="space-y-4">
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Premium:</span>
+                            <span className="text-2xl font-bold text-blue-600">$2.78M</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Limit:</span>
+                            <span className="text-lg font-semibold text-gray-900">$88M</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Commission:</span>
+                            <span className="text-lg font-semibold text-green-600">15.5%</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Capacity:</span>
+                            <span className="text-lg font-semibold text-purple-600">$88M</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </TabsContent>
+
+                  {/* Financial Overview Tab */}
+                  <TabsContent value="financial" className="p-8 mt-0">
+                    <h2 className="text-3xl font-serif text-gray-900 mb-6">Financial Overview - Key Metrics</h2>
                     
-                    <div>
-                      <p className="text-gray-400 text-sm">Deductible</p>
-                      <p className="text-white font-semibold">$50,000</p>
+                    <div className="overflow-x-auto">
+                      <table className="w-full">
+                        <thead>
+                          <tr className="border-b-2 border-gray-300">
+                            <th className="text-left py-4 px-4 text-gray-700 font-semibold">Underwriting Company</th>
+                            <th className="text-right py-4 px-4 text-gray-700 font-semibold">100% Premium</th>
+                            <th className="text-right py-4 px-4 text-gray-700 font-semibold">Attachment Point</th>
+                            <th className="text-right py-4 px-4 text-gray-700 font-semibold">Limit</th>
+                            <th className="text-right py-4 px-4 text-gray-700 font-semibold">Written Capacity</th>
+                            <th className="text-right py-4 px-4 text-gray-700 font-semibold">Commission %</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-6 px-4">
+                              <div className="flex items-center">
+                                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                                  A
+                                </div>
+                                <span className="font-semibold text-gray-900">Allianz</span>
+                              </div>
+                            </td>
+                            <td className="text-right py-6 px-4 text-gray-900 font-semibold">$2,950,000</td>
+                            <td className="text-right py-6 px-4 text-gray-900">$6,000,000</td>
+                            <td className="text-right py-6 px-4 text-gray-900">$25,000,000</td>
+                            <td className="text-right py-6 px-4 text-gray-900">$25,000,000</td>
+                            <td className="text-right py-6 px-4 text-green-600 font-semibold">15%</td>
+                          </tr>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-6 px-4">
+                              <div className="flex items-center">
+                                <div className="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                                  M
+                                </div>
+                                <span className="font-semibold text-gray-900">Munich Re</span>
+                              </div>
+                            </td>
+                            <td className="text-right py-6 px-4 text-gray-900 font-semibold">$2,990,000</td>
+                            <td className="text-right py-6 px-4 text-gray-900">$5,000,000</td>
+                            <td className="text-right py-6 px-4 text-gray-900">$30,000,000</td>
+                            <td className="text-right py-6 px-4 text-gray-900">$30,000,000</td>
+                            <td className="text-right py-6 px-4 text-green-600 font-semibold">14.5%</td>
+                          </tr>
+                          <tr className="hover:bg-gray-50">
+                            <td className="py-6 px-4">
+                              <div className="flex items-center">
+                                <span className="font-semibold text-gray-900 ml-13">AIG</span>
+                              </div>
+                            </td>
+                            <td className="text-right py-6 px-4 text-gray-900 font-semibold">$2,780,000</td>
+                            <td className="text-right py-6 px-4 text-gray-900">$5,000,000</td>
+                            <td className="text-right py-6 px-4 text-gray-900">$28,000,000</td>
+                            <td className="text-right py-6 px-4 text-gray-900">$28,000,000</td>
+                            <td className="text-right py-6 px-4 text-green-600 font-semibold">15.5%</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
+                  </TabsContent>
+
+                  {/* Limits of Liabilities Tab */}
+                  <TabsContent value="limits" className="p-8 mt-0">
+                    <h2 className="text-3xl font-serif text-gray-900 mb-6">Limits of Liabilities - Multi-Carrier Comparison</h2>
                     
-                    <div className="pt-4 border-t border-gray-700">
-                      <p className="text-gray-400 text-sm mb-2">Key Features</p>
-                      <ul className="text-sm text-gray-300 space-y-1">
-                        <li>✓ Basic coverage</li>
-                        <li>✓ Cost effective</li>
-                        <li>✓ Standard support</li>
-                      </ul>
+                    <div className="overflow-x-auto">
+                      <table className="w-full">
+                        <thead>
+                          <tr className="border-b-2 border-gray-300">
+                            <th className="text-left py-4 px-4 text-gray-700 font-semibold">Category</th>
+                            <th className="text-center py-4 px-4 text-gray-700 font-semibold">
+                              <div className="flex items-center justify-center">
+                                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm mr-2">A</div>
+                                Allianz
+                              </div>
+                            </th>
+                            <th className="text-center py-4 px-4 text-gray-700 font-semibold">
+                              <div className="flex items-center justify-center">
+                                <div className="w-8 h-8 bg-blue-700 rounded-full flex items-center justify-center text-white font-bold text-sm mr-2">M</div>
+                                Munich Re
+                              </div>
+                            </th>
+                            <th className="text-center py-4 px-4 text-gray-700 font-semibold">AIG</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">Account Receivable</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$2,000,000</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$2,200,000</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$1,900,000</td>
+                          </tr>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">Pipe Burst</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$5,000,000</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$5,500,000</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$4,600,000</td>
+                          </tr>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">Boiler & Machinery</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$25,000,000</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$28,000,000</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$24,000,000</td>
+                          </tr>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">Spoilage/Perishables</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$500,000</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$550,000</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$460,000</td>
+                          </tr>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">Water Damage</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$10,000,000</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$11,000,000</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$9,500,000</td>
+                          </tr>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">Liquor Liability</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$1,000,000</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$1,100,000</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$950,000</td>
+                          </tr>
+                          <tr className="border-b border-gray-200 hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">Professional Liability</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$5,000,000</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$5,500,000</td>
+                            <td className="text-center py-4 px-4 text-gray-900">$4,600,000</td>
+                          </tr>
+                          <tr className="hover:bg-gray-50">
+                            <td className="py-4 px-4 text-gray-900">
+                              War & Terrorism <span className="text-red-600 text-sm">(Not Covered)</span>
+                            </td>
+                            <td className="text-center py-4 px-4 text-gray-500">-</td>
+                            <td className="text-center py-4 px-4 text-gray-500">-</td>
+                            <td className="text-center py-4 px-4 text-gray-500">-</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
-                  </div>
-                  
-                  <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700" data-testid="select-quote-c">
-                    Select Quote
-                  </Button>
-                </CardContent>
-              </Card>
+                  </TabsContent>
+                </Tabs>
+              </div>
             </div>
-
-            <Card className="bg-gray-800 border-gray-700 mt-6">
-              <CardContent className="p-6">
-                <h3 className="text-white font-semibold mb-4">Comparison Summary</h3>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b border-gray-700">
-                        <th className="text-left py-2 text-gray-400">Feature</th>
-                        <th className="text-center py-2 text-gray-400">Provider A</th>
-                        <th className="text-center py-2 text-gray-400">Provider B</th>
-                        <th className="text-center py-2 text-gray-400">Provider C</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-gray-300">
-                      <tr className="border-b border-gray-700">
-                        <td className="py-2">Response Time</td>
-                        <td className="text-center">24h</td>
-                        <td className="text-center">12h</td>
-                        <td className="text-center">48h</td>
-                      </tr>
-                      <tr className="border-b border-gray-700">
-                        <td className="py-2">Claims Processing</td>
-                        <td className="text-center">Fast</td>
-                        <td className="text-center">Very Fast</td>
-                        <td className="text-center">Standard</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2">Customer Rating</td>
-                        <td className="text-center">4.5/5</td>
-                        <td className="text-center">4.7/5</td>
-                        <td className="text-center">4.2/5</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </CardContent>
-            </Card>
           </div>
         )}
       </div>
