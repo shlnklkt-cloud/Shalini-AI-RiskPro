@@ -848,15 +848,15 @@ const ProposalDetail = ({ user, onLogout }) => {
                     
                     {/* Chart */}
                     <div className="mb-8 bg-gray-50 p-8 rounded-lg">
-                      <div className="space-y-4">
+                      <div className="space-y-6">
                         {/* Liberty Mutual */}
                         <div>
                           <div className="flex justify-between mb-2">
-                            <span className="text-sm font-semibold text-gray-700">Liberty Mutual (80%)</span>
-                            <span className="text-sm font-semibold text-gray-700">$23,000</span>
+                            <span className="text-base font-semibold text-gray-800">Liberty Mutual (80%)</span>
+                            <span className="text-base font-semibold text-gray-800">$23,000</span>
                           </div>
-                          <div className="w-full bg-gray-200 rounded-full h-12 flex items-center">
-                            <div className="bg-blue-900 h-12 rounded-full flex items-center justify-center text-white font-bold" style={{width: '23%'}}>
+                          <div className="w-full bg-gray-200 rounded-md h-14 flex items-center overflow-hidden">
+                            <div className="bg-gradient-to-r from-blue-900 to-blue-800 h-14 rounded-md flex items-center justify-center text-white font-bold text-lg shadow-md" style={{width: '80%'}}>
                               $23,000
                             </div>
                           </div>
@@ -865,11 +865,11 @@ const ProposalDetail = ({ user, onLogout }) => {
                         {/* Munich Re */}
                         <div>
                           <div className="flex justify-between mb-2">
-                            <span className="text-sm font-semibold text-gray-700">Munich Re (40%)</span>
-                            <span className="text-sm font-semibold text-gray-700">$27,000</span>
+                            <span className="text-base font-semibold text-gray-800">Munich Re (40%)</span>
+                            <span className="text-base font-semibold text-gray-800">$27,000</span>
                           </div>
-                          <div className="w-full bg-gray-200 rounded-full h-12 flex items-center">
-                            <div className="bg-blue-700 h-12 rounded-full flex items-center justify-center text-white font-bold" style={{width: '27%'}}>
+                          <div className="w-full bg-gray-200 rounded-md h-14 flex items-center overflow-hidden">
+                            <div className="bg-gradient-to-r from-blue-600 to-blue-500 h-14 rounded-md flex items-center justify-center text-white font-bold text-lg shadow-md" style={{width: '40%'}}>
                               $27,000
                             </div>
                           </div>
@@ -878,11 +878,11 @@ const ProposalDetail = ({ user, onLogout }) => {
                         {/* Chubb */}
                         <div>
                           <div className="flex justify-between mb-2">
-                            <span className="text-sm font-semibold text-gray-700">Chubb (70%)</span>
-                            <span className="text-sm font-semibold text-gray-700">$24,000</span>
+                            <span className="text-base font-semibold text-gray-800">Chubb (70%)</span>
+                            <span className="text-base font-semibold text-gray-800">$24,000</span>
                           </div>
-                          <div className="w-full bg-gray-200 rounded-full h-12 flex items-center">
-                            <div className="bg-purple-600 h-12 rounded-full flex items-center justify-center text-white font-bold" style={{width: '53%'}}>
+                          <div className="w-full bg-gray-200 rounded-md h-14 flex items-center overflow-hidden">
+                            <div className="bg-gradient-to-r from-purple-600 to-purple-500 h-14 rounded-md flex items-center justify-center text-white font-bold text-lg shadow-md" style={{width: '70%'}}>
                               $24,000
                             </div>
                           </div>
@@ -891,11 +891,11 @@ const ProposalDetail = ({ user, onLogout }) => {
                         {/* Allianz */}
                         <div>
                           <div className="flex justify-between mb-2">
-                            <span className="text-sm font-semibold text-gray-700">Allianz (50%)</span>
-                            <span className="text-sm font-semibold text-gray-700">$28,000</span>
+                            <span className="text-base font-semibold text-gray-800">Allianz (50%)</span>
+                            <span className="text-base font-semibold text-gray-800">$28,000</span>
                           </div>
-                          <div className="w-full bg-gray-200 rounded-full h-12 flex items-center">
-                            <div className="bg-blue-800 h-12 rounded-full flex items-center justify-center text-white font-bold" style={{width: '42%'}}>
+                          <div className="w-full bg-gray-200 rounded-md h-14 flex items-center overflow-hidden">
+                            <div className="bg-gradient-to-r from-indigo-600 to-indigo-500 h-14 rounded-md flex items-center justify-center text-white font-bold text-lg shadow-md" style={{width: '50%'}}>
                               $28,000
                             </div>
                           </div>
@@ -904,11 +904,11 @@ const ProposalDetail = ({ user, onLogout }) => {
                         {/* Zurich */}
                         <div>
                           <div className="flex justify-between mb-2">
-                            <span className="text-sm font-semibold text-gray-700">Zurich (20%)</span>
-                            <span className="text-sm font-semibold text-gray-700">$26,000</span>
+                            <span className="text-base font-semibold text-gray-800">Zurich (20%)</span>
+                            <span className="text-base font-semibold text-gray-800">$26,000</span>
                           </div>
-                          <div className="w-full bg-gray-200 rounded-full h-12 flex items-center">
-                            <div className="bg-cyan-400 h-12 rounded-full flex items-center justify-center text-white font-bold" style={{width: '33%'}}>
+                          <div className="w-full bg-gray-200 rounded-md h-14 flex items-center overflow-hidden">
+                            <div className="bg-gradient-to-r from-cyan-400 to-cyan-300 h-14 rounded-md flex items-center justify-center text-white font-bold text-lg shadow-md" style={{width: '20%'}}>
                               $26,000
                             </div>
                           </div>
@@ -917,11 +917,11 @@ const ProposalDetail = ({ user, onLogout }) => {
                         {/* AIG */}
                         <div>
                           <div className="flex justify-between mb-2">
-                            <span className="text-sm font-semibold text-gray-700">AIG (80%)</span>
-                            <span className="text-sm font-semibold text-gray-700">$22,000</span>
+                            <span className="text-base font-semibold text-gray-800">AIG (80%)</span>
+                            <span className="text-base font-semibold text-gray-800">$22,000</span>
                           </div>
-                          <div className="w-full bg-gray-200 rounded-full h-12 flex items-center">
-                            <div className="bg-purple-500 h-12 rounded-full flex items-center justify-center text-white font-bold" style={{width: '90%'}}>
+                          <div className="w-full bg-gray-200 rounded-md h-14 flex items-center overflow-hidden">
+                            <div className="bg-gradient-to-r from-purple-500 to-purple-400 h-14 rounded-md flex items-center justify-center text-white font-bold text-lg shadow-md" style={{width: '80%'}}>
                               $22,000
                             </div>
                           </div>
