@@ -545,11 +545,11 @@ const ProposalDetail = ({ user, onLogout }) => {
                         <div className="bg-gray-50 rounded-lg p-6">
                           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
                             <div>
-                              <p className="text-sm text-gray-600 mb-1">Total Insured Value</p>
+                              <p className="text-sm text-gray-600 mb-1">Cost of Building</p>
                               <p className="text-2xl font-bold text-gray-900">{proposal.totalInsuredValue}</p>
                             </div>
                             <div>
-                              <p className="text-sm text-gray-600 mb-1">Building Type</p>
+                              <p className="text-sm text-gray-600 mb-1">SIC Description</p>
                               <p className="text-2xl font-bold text-gray-900">{proposal.businessType}</p>
                             </div>
                             <div>
