@@ -1037,10 +1037,11 @@ const ProposalDetail = ({ user, onLogout }) => {
                       {/* Allianz */}
                       <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                         <div className="flex items-center mb-6">
-                          <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">
-                            A
-                          </div>
-                          <h3 className="text-2xl font-bold text-gray-900">Allianz</h3>
+                          <img 
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Allianz_logo.svg/320px-Allianz_logo.svg.png" 
+                            alt="Allianz" 
+                            className="h-10 object-contain mr-3"
+                          />
                         </div>
                         <div className="space-y-4">
                           <div className="flex justify-between">
