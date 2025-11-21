@@ -1183,8 +1183,9 @@ const ProposalDetail = ({ user, onLogout }) => {
                                 <img 
                                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/AIG_logo.svg/320px-AIG_logo.svg.png" 
                                   alt="AIG" 
-                                  className="h-8 object-contain"
+                                  className="h-6 object-contain mr-3"
                                 />
+                                <span className="font-semibold text-gray-900">AIG</span>
                               </div>
                             </td>
                             <td className="text-right py-6 px-4 text-gray-900 font-semibold">$2,780,000</td>
