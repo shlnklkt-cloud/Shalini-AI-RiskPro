@@ -142,25 +142,20 @@ const Dashboard = ({ user, onLogout }) => {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-900">
       {/* Sidebar */}
-      <div className="w-64 bg-slate-900 p-6" data-testid="sidebar">
-        {/* Logo */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-white">Risk Pro</h1>
-        </div>
-
-        <div className="space-y-4">
+      <div className="w-64 bg-gray-800 border-r border-gray-700 p-6" data-testid="sidebar">
+        <div className="space-y-6">
           <Button 
             variant="default" 
-            className="w-full justify-start bg-blue-600 hover:bg-blue-700 text-white"
+            className="w-full justify-start bg-blue-600 hover:bg-blue-700"
             data-testid="dashboard-nav-button"
           >
             <FileText className="mr-2 h-4 w-4" />
             Dashboard
           </Button>
 
-          <div className="pt-64">
+          <div className="pt-8">
             <Button 
               variant="ghost" 
               className="w-full justify-start text-red-400 hover:text-red-300 hover:bg-red-500/10"
@@ -175,7 +170,7 @@ const Dashboard = ({ user, onLogout }) => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-8 bg-gray-50">
+      <div className="flex-1 p-8">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div>
