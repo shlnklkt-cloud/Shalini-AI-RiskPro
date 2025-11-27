@@ -428,16 +428,26 @@ async def seed_database(force: bool = False):
         await db.users.delete_many({})
         await db.proposals.delete_many({})
     
-    # Create default user
-    user = {
-        "id": str(uuid.uuid4()),
-        "username": "LARA",
-        "password": "password123",
-        "fullName": "Lara",
-        "role": "Underwriter",
-        "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Lara"
-    }
-    await db.users.insert_one(user)
+    # Create users
+    users = [
+        {
+            "id": str(uuid.uuid4()),
+            "username": "LARA",
+            "password": "password123",
+            "fullName": "Lara",
+            "role": "UWR_B",
+            "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Lara"
+        },
+        {
+            "id": str(uuid.uuid4()),
+            "username": "ZARA",
+            "password": "password123",
+            "fullName": "Zara",
+            "role": "UWR_C",
+            "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Zara"
+        }
+    ]
+    await db.users.insert_many(users)
     
     # Create sample proposals
     sample_proposals = [
