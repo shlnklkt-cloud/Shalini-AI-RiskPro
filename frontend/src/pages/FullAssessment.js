@@ -184,17 +184,10 @@ const FullAssessment = ({ user, onLogout }) => {
                 frameBorder="0"
                 style={{border: 0}}
                 referrerPolicy="no-referrer-when-downgrade"
-                src={`https://www.google.com/maps/embed/api/v1/view?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&center=${assessment.locationIntelligence?.coordinates}&zoom=19&maptype=satellite`}
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodeURIComponent(assessment.locationIntelligence?.address)}&center=${assessment.locationIntelligence?.coordinates}&zoom=19&maptype=satellite`}
                 allowFullScreen
                 title="Property Location Map"
-              />
-              {/* Custom marker overlay */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full pointer-events-none">
-                <svg width="40" height="50" viewBox="0 0 40 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 0C8.95 0 0 8.95 0 20C0 32 20 50 20 50C20 50 40 32 40 20C40 8.95 31.05 0 20 0ZM20 27C16.13 27 13 23.87 13 20C13 16.13 16.13 13 20 13C23.87 13 27 16.13 27 20C27 23.87 23.87 27 20 27Z" fill="#EA4335"/>
-                  <circle cx="20" cy="20" r="5" fill="white"/>
-                </svg>
-              </div>
+              ></iframe>
             </div>
 
             {/* Location Details Grid */}
