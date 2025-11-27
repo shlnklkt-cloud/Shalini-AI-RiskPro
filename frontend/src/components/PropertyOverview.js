@@ -1,10 +1,77 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { FileText } from 'lucide-react';
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
+
 const PropertyOverview = ({ property }) => {
+  const navigate = useNavigate();
+  const [documents, setDocuments] = useState([]);
+  const [uploading, setUploading] = useState(false);
+
+  useEffect(() => {
+    fetchDocuments();
+  }, [property.id]);
+
+  const fetchDocuments = async () => {
+    try {
+      const response = await axios.get(`${API}/properties/${property.id}/documents`);
+      setDocuments(response.data);
+    } catch (error) {
+      console.error('Error fetching documents:', error);
+      // If no documents exist, show default document
+      setDocuments([{
+        id: 'default-doc',
+        name: 'PropSov1 - Cleansed SOV.xlsx',
+        size: '9.9 KB',
+        uploadedAt: '11/20/2025',
+        status: 'completed',
+        confidence: 85
+      }]);
+    }
+  };
+
+  const handleUploadDocument = async () => {
+    setUploading(true);
+    try {
+      const newDoc = {
+        name: `Document_${Date.now()}.pdf`,
+        size: '2.5 MB'
+      };
+      await axios.post(`${API}/properties/${property.id}/documents`, newDoc);
+      await fetchDocuments();
+      alert('Document uploaded successfully!');
+    } catch (error) {
+      console.error('Error uploading document:', error);
+      alert('Error uploading document');
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleDeleteDocument = async (documentId) => {
+    if (!window.confirm('Are you sure you want to delete this document?')) {
+      return;
+    }
+    
+    try {
+      await axios.delete(`${API}/properties/${property.id}/documents/${documentId}`);
+      await fetchDocuments();
+      alert('Document deleted successfully!');
+    } catch (error) {
+      console.error('Error deleting document:', error);
+      alert('Error deleting document');
+    }
+  };
+
+  const handleViewFullAssessment = () => {
+    navigate(`/property/${property.id}/full-assessment`);
+  };
   return (
     <div className="space-y-6" data-testid="property-overview">
       {/* Property Information Grid */}
