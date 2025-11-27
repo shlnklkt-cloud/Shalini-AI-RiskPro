@@ -60,13 +60,13 @@ const DashboardUWRC = ({ user, onLogout }) => {
   };
 
   if (loading) {
-    return <div className="flex items-center justify-center min-h-screen bg-gray-50 text-gray-900">Loading...</div>;
+    return <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">Loading...</div>;
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-900">
       {/* Sidebar */}
-      <div className="w-64 bg-white border-r border-gray-200 p-6" data-testid="sidebar">
+      <div className="w-64 bg-gray-800 border-r border-gray-700 p-6" data-testid="sidebar">
         <div className="space-y-6">
           <Button 
             variant="default" 
