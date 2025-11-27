@@ -1,9 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import ProposalDetail from './pages/ProposalDetail';
 import './App.css';
+
+// Lazy load property detail page
+const PropertyDetail = lazy(() => import('./pages/PropertyDetail'));
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -37,7 +40,7 @@ function App() {
   };
 
   if (loading) {
-    return <div className="flex items-center justify-center min-h-screen bg-gray-900">Loading...</div>;
+    return <div className="flex items-center justify-center min-h-screen bg-gray-50">Loading...</div>;
   }
 
   return (
@@ -54,6 +57,18 @@ function App() {
         <Route 
           path="/proposal/:id" 
           element={isAuthenticated ? <ProposalDetail user={user} onLogout={handleLogout} /> : <Navigate to="/" />} 
+        />
+        <Route 
+          path="/property/:id" 
+          element={
+            isAuthenticated ? (
+              <Suspense fallback={<div className="flex items-center justify-center min-h-screen bg-gray-50">Loading...</div>}>
+                <PropertyDetail user={user} onLogout={handleLogout} />
+              </Suspense>
+            ) : (
+              <Navigate to="/" />
+            )
+          } 
         />
       </Routes>
     </BrowserRouter>
