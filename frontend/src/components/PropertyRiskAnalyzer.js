@@ -22,8 +22,8 @@ const PropertyRiskAnalyzer = ({ property }) => {
   return (
     <div className="space-y-6" data-testid="risk-analyzer">
       {/* LOB Selection */}
-      <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Select Line of Business</h2>
+      <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
+        <h2 className="text-2xl font-bold text-white mb-4">Select Line of Business</h2>
         <div className="flex flex-wrap gap-3">
           {allLOBs.map((lob) => {
             const enabled = isLOBEnabled(lob);
