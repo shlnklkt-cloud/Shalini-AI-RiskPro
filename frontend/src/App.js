@@ -7,6 +7,7 @@ import './App.css';
 
 // Lazy load property detail page
 const PropertyDetail = lazy(() => import('./pages/PropertyDetail'));
+const FullAssessment = lazy(() => import('./pages/FullAssessment'));
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
