@@ -179,8 +179,8 @@ const WhatIfAnalysisPage = ({ propertyId, lob, propertyName }) => {
           </div>
         </>
       ) : (
-        <div className="text-center py-12 bg-gray-50 rounded-lg border border-gray-200">
-          <p className="text-gray-600">No coverage data available for what-if analysis</p>
+        <div className="text-center py-12 bg-gray-800 rounded-lg border border-gray-700">
+          <p className="text-gray-400">No coverage data available for what-if analysis</p>
         </div>
       )}
     </div>
