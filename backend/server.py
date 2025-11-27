@@ -116,8 +116,11 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(s
 
 @api_router.post("/auth/login", response_model=LoginResponse)
 async def login(login_data: LoginRequest):
-    # Find user by username
-    user = await db.users.find_one({"username": login_data.username}, {"_id": 0})
+    # Find user by username and role
+    user = await db.users.find_one({
+        "username": login_data.username,
+        "role": login_data.role
+    }, {"_id": 0})
     
     if not user or user.get("password") != login_data.password:
         raise HTTPException(status_code=401, detail="Invalid credentials")
