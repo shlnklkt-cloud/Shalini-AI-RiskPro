@@ -20,12 +20,19 @@ const Login = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    
+    if (!role) {
+      setError('Please select a role');
+      return;
+    }
+    
     setLoading(true);
 
     try {
       const response = await axios.post(`${API}/auth/login`, {
         username,
-        password
+        password,
+        role
       });
 
       if (response.data.success) {
