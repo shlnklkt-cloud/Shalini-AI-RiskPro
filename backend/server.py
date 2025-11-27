@@ -537,7 +537,164 @@ async def seed_database(force: bool = False):
     
     await db.proposals.insert_many(sample_proposals)
     
-    return {"message": "Database seeded successfully", "proposals": len(sample_proposals)}
+    # Create property data for UWR_C dashboard
+    us_states = ["California", "Texas", "Florida", "New York", "Illinois", "Pennsylvania", "Ohio", "Georgia", "North Carolina", "Michigan"]
+    property_types = ["new_business", "renewal", "endorsement"]
+    
+    properties_data = []
+    exposures_data = []
+    limits_data = []
+    
+    # Property coverage definitions by LOB
+    lob_coverages = {
+        "Property": {
+            "coverages": [
+                {"name": "Building & Contents", "limit": "50000000", "aggregate": "50000000"},
+                {"name": "Business Interruption", "limit": "25000000", "aggregate": "25000000"},
+                {"name": "Account Receivable", "limit": "10000000", "aggregate": "10000000"},
+                {"name": "Pipe Burst", "limit": "5000000", "aggregate": "5000000"},
+                {"name": "Boiler & Machinery - Property Damage", "limit": "8000000", "aggregate": "8000000"},
+                {"name": "Spoilage/Perishables/Water Damage", "limit": "7000000", "aggregate": "7000000"}
+            ]
+        },
+        "Umbrella": {
+            "coverages": [
+                {"name": "Excess Bodily Injury", "limit": "30000000", "aggregate": "30000000"},
+                {"name": "Excess Property Damage", "limit": "20000000", "aggregate": "20000000"},
+                {"name": "Excess Personal Injury", "limit": "15000000", "aggregate": "15000000"},
+                {"name": "Excess Products Liability", "limit": "10000000", "aggregate": "10000000"},
+                {"name": "Excess Contractual Liability", "limit": "10000000", "aggregate": "10000000"}
+            ]
+        },
+        "General Liability": {
+            "coverages": [
+                {"name": "Bodily Injury", "limit": "25000000", "aggregate": "25000000"},
+                {"name": "Cyber Liability", "limit": "15000000", "aggregate": "15000000"},
+                {"name": "Legal Liability", "limit": "20000000", "aggregate": "20000000"},
+                {"name": "EPLI", "limit": "10000000", "aggregate": "10000000"},
+                {"name": "Contractual Liability", "limit": "12000000", "aggregate": "12000000"},
+                {"name": "Liquor Liability", "limit": "8000000", "aggregate": "8000000"}
+            ]
+        },
+        "Package": {
+            "coverages": [
+                {"name": "Building & Contents", "limit": "40000000", "aggregate": "40000000"},
+                {"name": "Business Interruption", "limit": "20000000", "aggregate": "20000000"},
+                {"name": "General Liability", "limit": "15000000", "aggregate": "15000000"},
+                {"name": "Equipment Breakdown", "limit": "10000000", "aggregate": "10000000"},
+                {"name": "Crime Coverage", "limit": "5000000", "aggregate": "5000000"}
+            ]
+        },
+        "Auto": {
+            "coverages": [
+                {"name": "Liability Coverage", "limit": "20000000", "aggregate": "20000000"},
+                {"name": "Physical Damage", "limit": "15000000", "aggregate": "15000000"},
+                {"name": "Uninsured Motorist", "limit": "10000000", "aggregate": "10000000"},
+                {"name": "Medical Payments", "limit": "5000000", "aggregate": "5000000"}
+            ]
+        },
+        "Inland Marine": {
+            "coverages": [
+                {"name": "Contractors Equipment", "limit": "18000000", "aggregate": "18000000"},
+                {"name": "Transit Coverage", "limit": "12000000", "aggregate": "12000000"},
+                {"name": "Installation Floater", "limit": "10000000", "aggregate": "10000000"},
+                {"name": "Valuable Papers", "limit": "5000000", "aggregate": "5000000"}
+            ]
+        }
+    }
+    
+    # Sample properties with multiple LOBs
+    sample_properties_list = [
+        {"name": "Marriott Hotel Chicago", "customer": "Marriott", "lobs": ["Property", "Umbrella"], "state": "Illinois", "sicCode": "7011", "operation": "Hospitality", "customerId": "CLT-001"},
+        {"name": "Houston Tech Center", "customer": "Tech Solutions Inc", "lobs": ["Property", "General Liability"], "state": "Texas", "sicCode": "7372", "operation": "Technology", "customerId": "CLT-002"},
+        {"name": "Miami Beach Resort", "customer": "Oceanfront Hotels", "lobs": ["Property", "Umbrella", "General Liability"], "state": "Florida", "sicCode": "7011", "operation": "Hospitality", "customerId": "CLT-003"},
+        {"name": "San Francisco Office Tower", "customer": "Bay Properties LLC", "lobs": ["Package", "Property"], "state": "California", "sicCode": "6512", "operation": "Real Estate", "customerId": "CLT-004"},
+        {"name": "Atlanta Distribution Center", "customer": "Logistics Corp", "lobs": ["Property", "Auto", "Inland Marine"], "state": "Georgia", "sicCode": "4225", "operation": "Logistics", "customerId": "CLT-005"},
+        {"name": "Phoenix Medical Plaza", "customer": "Healthcare Partners", "lobs": ["Property", "General Liability"], "state": "Texas", "sicCode": "8011", "operation": "Healthcare", "customerId": "CLT-006"},
+        {"name": "Boston Financial Tower", "customer": "Northeast Banking", "lobs": ["Package", "Umbrella"], "state": "New York", "sicCode": "6022", "operation": "Finance", "customerId": "CLT-007"},
+        {"name": "Seattle Manufacturing Plant", "customer": "Pacific Manufacturing", "lobs": ["Property", "Auto", "General Liability"], "state": "California", "sicCode": "3711", "operation": "Manufacturing", "customerId": "CLT-008"},
+        {"name": "Denver Shopping Mall", "customer": "Retail Properties Inc", "lobs": ["Property", "Umbrella"], "state": "Texas", "sicCode": "5311", "operation": "Retail", "customerId": "CLT-009"},
+        {"name": "Philadelphia Historic Building", "customer": "Heritage Properties", "lobs": ["Property"], "state": "Pennsylvania", "sicCode": "6512", "operation": "Real Estate", "customerId": "CLT-010"},
+    ]
+    
+    for i, prop in enumerate(sample_properties_list):
+        property_id = f"prop-uwrc-{str(i+1).zfill(3)}"
+        
+        # Create property
+        property_doc = {
+            "id": property_id,
+            "product": "Multi Pro",
+            "lobs": prop["lobs"],
+            "customerName": prop["customer"],
+            "effectiveDate": f"09/29/2024",
+            "sicCode": prop["sicCode"],
+            "operation": prop["operation"],
+            "state": prop["state"],
+            "customerId": prop["customerId"],
+            "type": property_types[i % 3],
+            "status": "pending" if i % 3 == 0 else "completed",
+            "premium": f"${(i+1)*2.5:.1f}M",
+            "propertyName": prop["name"]
+        }
+        properties_data.append(property_doc)
+        
+        # Create exposures for each LOB
+        for lob in prop["lobs"]:
+            if lob in lob_coverages:
+                total_2024 = sum([float(c["limit"]) for c in lob_coverages[lob]["coverages"]])
+                total_2025 = total_2024 * 1.1  # 10% increase for 2025
+                
+                exposure_doc = {
+                    "propertyId": property_id,
+                    "lob": lob,
+                    "propertyName": prop["name"],
+                    "totalInsurableValue2024": f"${total_2024/1000000:.1f}M",
+                    "totalInsurableValue2025": f"${total_2025/1000000:.1f}M",
+                    "coverages": [
+                        {
+                            "name": c["name"],
+                            "limit": f"${float(c['limit'])/1000000:.1f}M"
+                        } for c in lob_coverages[lob]["coverages"]
+                    ]
+                }
+                exposures_data.append(exposure_doc)
+                
+                # Create limits
+                limits_doc = {
+                    "propertyId": property_id,
+                    "lob": lob,
+                    "propertyName": prop["name"],
+                    "categories": [
+                        {
+                            "name": c["name"],
+                            "perOccurrenceLimit": f"${float(c['limit'])/1000000:.1f}M",
+                            "aggregateLimit": f"${float(c['aggregate'])/1000000:.1f}M"
+                        } for c in lob_coverages[lob]["coverages"]
+                    ] + [
+                        {
+                            "name": "War & Terrorism",
+                            "perOccurrenceLimit": "Not Covered",
+                            "aggregateLimit": "Not Covered"
+                        }
+                    ]
+                }
+                limits_data.append(limits_doc)
+    
+    # Insert property data
+    if properties_data:
+        await db.properties.insert_many(properties_data)
+    if exposures_data:
+        await db.exposures.insert_many(exposures_data)
+    if limits_data:
+        await db.limits.insert_many(limits_data)
+    
+    return {
+        "message": "Database seeded successfully", 
+        "proposals": len(sample_proposals),
+        "properties": len(properties_data),
+        "exposures": len(exposures_data),
+        "limits": len(limits_data)
+    }
 
 # ============= ROOT ROUTE =============
 
