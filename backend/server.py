@@ -425,17 +425,27 @@ async def get_property_documents(property_id: str):
 @api_router.post("/properties/{property_id}/documents")
 async def upload_document(property_id: str, document: dict):
     """Upload a document (simulated)"""
+    doc_id = str(uuid.uuid4())
     doc = {
-        "id": str(uuid.uuid4()),
+        "id": doc_id,
         "propertyId": property_id,
         "name": document.get("name", "document.pdf"),
         "size": document.get("size", "0 KB"),
-        "uploadedAt": datetime.now(timezone.utc).isoformat(),
+        "uploadedAt": datetime.now(timezone.utc).strftime("%m/%d/%Y"),
         "status": "completed",
         "confidence": 85
     }
     await db.documents.insert_one(doc)
-    return doc
+    # Return without _id
+    return {
+        "id": doc_id,
+        "propertyId": property_id,
+        "name": doc["name"],
+        "size": doc["size"],
+        "uploadedAt": doc["uploadedAt"],
+        "status": doc["status"],
+        "confidence": doc["confidence"]
+    }
 
 @api_router.delete("/properties/{property_id}/documents/{document_id}")
 async def delete_document(property_id: str, document_id: str):
