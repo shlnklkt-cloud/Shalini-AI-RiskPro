@@ -239,6 +239,181 @@ async def get_statistics():
         hitRatio=round(hit_ratio, 1)
     )
 
+# ============= UWR_C DASHBOARD APIs =============
+
+@api_router.get("/uwrc/statistics")
+async def get_uwrc_statistics():
+    """Get statistics for UWR_C dashboard"""
+    # Get property data
+    properties = await db.properties.find({}, {"_id": 0}).to_list(1000)
+    
+    # Calculate statistics
+    new_business = len([p for p in properties if p.get("type") == "new_business"])
+    renewals = len([p for p in properties if p.get("type") == "renewal"])
+    endorsements = len([p for p in properties if p.get("type") == "endorsement"])
+    
+    pending_submissions = len([p for p in properties if p.get("status") == "pending"])
+    
+    # Calculate potential premium
+    total_premium = sum([float(p.get("premium", "0").replace("$", "").replace("M", "").replace(",", "")) for p in properties])
+    
+    # Calculate hit ratio
+    completed = len([p for p in properties if p.get("status") == "completed"])
+    hit_ratio = (completed / len(properties) * 100) if len(properties) > 0 else 0
+    
+    return {
+        "newBusiness": new_business,
+        "renewals": renewals,
+        "endorsements": endorsements,
+        "pendingSubmissions": pending_submissions,
+        "potentialPremium": f"${total_premium:.1f}M",
+        "hitRatio": round(hit_ratio, 1)
+    }
+
+@api_router.get("/uwrc/properties")
+async def get_uwrc_properties(
+    state: Optional[str] = None,
+    lob: Optional[str] = None,
+    customerId: Optional[str] = None
+):
+    """Get properties for UWR_C dashboard with filters"""
+    query = {}
+    
+    if state and state != "All":
+        query["state"] = state
+    if lob and lob != "All":
+        query["lobs"] = lob
+    if customerId and customerId != "All":
+        query["customerId"] = customerId
+    
+    properties = await db.properties.find(query, {"_id": 0}).to_list(1000)
+    return properties
+
+@api_router.get("/uwrc/filters")
+async def get_uwrc_filters():
+    """Get available filter options"""
+    properties = await db.properties.find({}, {"_id": 0}).to_list(1000)
+    
+    # Extract unique states
+    states = list(set([p.get("state") for p in properties if p.get("state")]))
+    states.sort()
+    
+    # Extract unique customer IDs
+    customer_ids = list(set([p.get("customerId") for p in properties if p.get("customerId")]))
+    customer_ids.sort()
+    
+    return {
+        "states": ["All"] + states,
+        "lobs": ["All", "Package", "Property", "Auto", "Inland Marine", "Umbrella", "General Liability"],
+        "customerIds": ["All"] + customer_ids
+    }
+
+# ============= PROPERTY DETAILS APIs =============
+
+@api_router.get("/properties/{property_id}")
+async def get_property_detail(property_id: str):
+    """Get detailed property information"""
+    property_data = await db.properties.find_one({"id": property_id}, {"_id": 0})
+    if not property_data:
+        raise HTTPException(status_code=404, detail="Property not found")
+    return property_data
+
+@api_router.get("/properties/{property_id}/exposure/{lob}")
+async def get_property_exposure(property_id: str, lob: str):
+    """Get exposure data for a specific LOB"""
+    exposure = await db.exposures.find_one({"propertyId": property_id, "lob": lob}, {"_id": 0})
+    if not exposure:
+        # Return default structure
+        return {
+            "propertyId": property_id,
+            "lob": lob,
+            "totalInsurableValue2024": "$0M",
+            "totalInsurableValue2025": "$0M",
+            "coverages": []
+        }
+    return exposure
+
+@api_router.get("/properties/{property_id}/limits/{lob}")
+async def get_property_limits(property_id: str, lob: str):
+    """Get limit of liabilities for a specific LOB"""
+    limits = await db.limits.find_one({"propertyId": property_id, "lob": lob}, {"_id": 0})
+    if not limits:
+        return {
+            "propertyId": property_id,
+            "lob": lob,
+            "categories": []
+        }
+    return limits
+
+@api_router.post("/properties/{property_id}/whatif/{lob}")
+async def save_whatif_analysis(property_id: str, lob: str, data: dict):
+    """Save what-if analysis data"""
+    whatif_data = {
+        "propertyId": property_id,
+        "lob": lob,
+        "coverages": data.get("coverages", []),
+        "totalPremium": data.get("totalPremium", "0"),
+        "updatedAt": datetime.now(timezone.utc).isoformat()
+    }
+    
+    # Update or insert
+    await db.whatif.update_one(
+        {"propertyId": property_id, "lob": lob},
+        {"$set": whatif_data},
+        upsert=True
+    )
+    
+    return {"success": True, "message": "What-if analysis saved"}
+
+@api_router.get("/properties/{property_id}/whatif/{lob}")
+async def get_whatif_analysis(property_id: str, lob: str):
+    """Get what-if analysis data"""
+    whatif = await db.whatif.find_one({"propertyId": property_id, "lob": lob}, {"_id": 0})
+    if not whatif:
+        # Get default from exposure
+        exposure = await db.exposures.find_one({"propertyId": property_id, "lob": lob}, {"_id": 0})
+        if exposure:
+            return {
+                "propertyId": property_id,
+                "lob": lob,
+                "coverages": exposure.get("coverages", []),
+                "totalPremium": "0"
+            }
+        return {
+            "propertyId": property_id,
+            "lob": lob,
+            "coverages": [],
+            "totalPremium": "0"
+        }
+    return whatif
+
+@api_router.get("/properties/{property_id}/multiline-quote")
+async def get_multiline_quote(property_id: str):
+    """Get multi-line quote summary"""
+    property_data = await db.properties.find_one({"id": property_id}, {"_id": 0})
+    if not property_data:
+        raise HTTPException(status_code=404, detail="Property not found")
+    
+    lobs = property_data.get("lobs", [])
+    quote_items = []
+    total_premium = 0
+    
+    for lob in lobs:
+        whatif = await db.whatif.find_one({"propertyId": property_id, "lob": lob}, {"_id": 0})
+        if whatif:
+            premium_str = whatif.get("totalPremium", "0").replace("$", "").replace("M", "").replace(",", "")
+            premium = float(premium_str) if premium_str else 0
+            quote_items.append({
+                "product": lob,
+                "premium": f"${premium:.2f}M"
+            })
+            total_premium += premium
+    
+    return {
+        "items": quote_items,
+        "totalPremium": f"${total_premium:.2f}M"
+    }
+
 # ============= SEED DATA =============
 
 @api_router.post("/seed")
