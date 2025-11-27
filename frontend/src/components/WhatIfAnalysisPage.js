@@ -143,44 +143,44 @@ const WhatIfAnalysisPage = ({ propertyId, lob, propertyName }) => {
           </div>
 
           {/* Total Premium */}
-          <Card className=\"bg-blue-50 border-blue-200\">
-            <CardContent className=\"p-6\">
-              <div className=\"flex justify-between items-center\">
+          <Card className="bg-blue-50 border-blue-200">
+            <CardContent className="p-6">
+              <div className="flex justify-between items-center">
                 <div>
-                  <h4 className=\"text-lg font-semibold text-gray-900 mb-1\">Total Premium</h4>
-                  <p className=\"text-sm text-gray-600\">Sum of all coverage premiums</p>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-1">Total Premium</h4>
+                  <p className="text-sm text-gray-600">Sum of all coverage premiums</p>
                 </div>
-                <div className=\"text-right\">
-                  <p className=\"text-4xl font-bold text-blue-600\">${totalPremium.toFixed(2)}M</p>
+                <div className="text-right">
+                  <p className="text-4xl font-bold text-blue-600">${totalPremium.toFixed(2)}M</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
           {/* Action Buttons */}
-          <div className=\"flex gap-4 justify-end\">
+          <div className="flex gap-4 justify-end">
             <Button
               onClick={() => handleSave('reject')}
               disabled={saving}
-              variant=\"outline\"
-              className=\"px-8 py-3 bg-white text-red-600 border-red-600 hover:bg-red-50\"
-              data-testid=\"reject-risk-button\"
+              variant="outline"
+              className="px-8 py-3 bg-white text-red-600 border-red-600 hover:bg-red-50"
+              data-testid="reject-risk-button"
             >
               {saving ? 'Saving...' : 'Reject Risk'}
             </Button>
             <Button
               onClick={() => handleSave('accept')}
               disabled={saving}
-              className=\"px-8 py-3 bg-green-600 hover:bg-green-700 text-white\"
-              data-testid=\"accept-risk-button\"
+              className="px-8 py-3 bg-green-600 hover:bg-green-700 text-white"
+              data-testid="accept-risk-button"
             >
               {saving ? 'Saving...' : 'Accept Risk'}
             </Button>
           </div>
         </>
       ) : (
-        <div className=\"text-center py-12 bg-gray-50 rounded-lg border border-gray-200\">
-          <p className=\"text-gray-600\">No coverage data available for what-if analysis</p>
+        <div className="text-center py-12 bg-gray-50 rounded-lg border border-gray-200">
+          <p className="text-gray-600">No coverage data available for what-if analysis</p>
         </div>
       )}
     </div>
