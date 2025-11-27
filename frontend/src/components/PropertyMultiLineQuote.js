@@ -96,23 +96,23 @@ const PropertyMultiLineQuote = ({ property }) => {
       </div>
 
       {quoteData?.items && quoteData.items.length > 0 && (
-        <Card className="bg-green-50 border-green-200">
+        <Card className="bg-green-500/20 border-green-500/30">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
                 ✓
               </div>
               <div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">Quote Ready</h4>
-                <p className="text-gray-700 mb-4">
+                <h4 className="text-lg font-semibold text-white mb-2">Quote Ready</h4>
+                <p className="text-gray-300 mb-4">
                   The multi-line quote has been calculated based on your What-If Analysis selections. 
-                  The total premium across all {quoteData.items.length} line{quoteData.items.length !== 1 ? 's' : ''} of business is <span className="font-bold">{quoteData.totalPremium}</span>.
+                  The total premium across all {quoteData.items.length} line{quoteData.items.length !== 1 ? 's' : ''} of business is <span className="font-bold text-white">{quoteData.totalPremium}</span>.
                 </p>
                 <div className="flex gap-3">
                   <button className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium">
                     Generate Quote Document
                   </button>
-                  <button className="px-6 py-2 bg-white text-green-600 border border-green-600 rounded-lg hover:bg-green-50 font-medium">
+                  <button className="px-6 py-2 bg-gray-800 text-green-400 border border-green-500/30 rounded-lg hover:bg-gray-700 font-medium">
                     Email Quote to Client
                   </button>
                 </div>
