@@ -33,6 +33,7 @@ security = HTTPBearer(auto_error=False)
 class LoginRequest(BaseModel):
     username: str
     password: str
+    role: str
 
 class LoginResponse(BaseModel):
     success: bool
