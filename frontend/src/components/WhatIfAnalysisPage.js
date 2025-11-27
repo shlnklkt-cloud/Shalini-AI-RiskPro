@@ -102,10 +102,10 @@ const WhatIfAnalysisPage = ({ propertyId, lob, propertyName }) => {
 
       {coverages.length > 0 ? (
         <>
-          <div className=\"space-y-6\">
+          <div className="space-y-6">
             {coverages.map((coverage, index) => (
-              <Card key={index} className=\"bg-white border-gray-200\">
-                <CardContent className=\"p-6\">
+              <Card key={index} className="bg-white border-gray-200">
+                <CardContent className="p-6">
                   <div className="mb-4">
                     <h4 className="text-lg font-semibold text-gray-900 mb-2">{coverage.name}</h4>
                     <div className="flex items-center gap-4 text-sm text-gray-600">
