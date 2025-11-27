@@ -25,14 +25,14 @@ const LimitOfLiabilitiesPage = ({ propertyId, lob, propertyName }) => {
   };
 
   if (loading) {
-    return <div className="text-gray-600">Loading limit data...</div>;
+    return <div className="text-gray-400">Loading limit data...</div>;
   }
 
   return (
     <div className="space-y-6" data-testid="limits-page">
       <div>
-        <h3 className="text-2xl font-bold text-gray-900 mb-2">{propertyName}</h3>
-        <p className="text-gray-600">Limit of Liabilities for <span className="font-semibold">{lob}</span></p>
+        <h3 className="text-2xl font-bold text-white mb-2">{propertyName}</h3>
+        <p className="text-gray-400">Limit of Liabilities for <span className="font-semibold text-white">{lob}</span></p>
       </div>
 
       <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
