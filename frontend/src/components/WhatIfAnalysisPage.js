@@ -104,16 +104,16 @@ const WhatIfAnalysisPage = ({ propertyId, lob, propertyName }) => {
         <>
           <div className="space-y-6">
             {coverages.map((coverage, index) => (
-              <Card key={index} className="bg-white border-gray-200">
+              <Card key={index} className="bg-gray-700 border-gray-600">
                 <CardContent className="p-6">
                   <div className="mb-4">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{coverage.name}</h4>
-                    <div className="flex items-center gap-4 text-sm text-gray-600">
+                    <h4 className="text-lg font-semibold text-white mb-2">{coverage.name}</h4>
+                    <div className="flex items-center gap-4 text-sm text-gray-400">
                       <span>Range: ${coverage.minLimit}M - ${coverage.maxLimit}M</span>
-                      <span className="text-gray-400">|</span>
-                      <span>Selected: <span className="font-semibold text-gray-900">${coverage.selectedLimit.toFixed(1)}M</span></span>
-                      <span className="text-gray-400">|</span>
-                      <span>Deductible: <span className="font-semibold text-gray-900">${coverage.deductible}M</span></span>
+                      <span className="text-gray-600">|</span>
+                      <span>Selected: <span className="font-semibold text-white">${coverage.selectedLimit.toFixed(1)}M</span></span>
+                      <span className="text-gray-600">|</span>
+                      <span>Deductible: <span className="font-semibold text-white">${coverage.deductible}M</span></span>
                     </div>
                   </div>
 
@@ -133,9 +133,9 @@ const WhatIfAnalysisPage = ({ propertyId, lob, propertyName }) => {
                     </div>
                   </div>
 
-                  <div className="flex justify-between items-center pt-4 border-t border-gray-200">
-                    <span className="text-sm font-medium text-gray-700">Calculated Premium</span>
-                    <span className="text-xl font-bold text-green-600">${coverage.premium.toFixed(2)}M</span>
+                  <div className="flex justify-between items-center pt-4 border-t border-gray-600">
+                    <span className="text-sm font-medium text-gray-300">Calculated Premium</span>
+                    <span className="text-xl font-bold text-green-400">${coverage.premium.toFixed(2)}M</span>
                   </div>
                 </CardContent>
               </Card>
@@ -143,15 +143,15 @@ const WhatIfAnalysisPage = ({ propertyId, lob, propertyName }) => {
           </div>
 
           {/* Total Premium */}
-          <Card className="bg-blue-50 border-blue-200">
+          <Card className="bg-blue-500/20 border-blue-500/30">
             <CardContent className="p-6">
               <div className="flex justify-between items-center">
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-1">Total Premium</h4>
-                  <p className="text-sm text-gray-600">Sum of all coverage premiums</p>
+                  <h4 className="text-lg font-semibold text-white mb-1">Total Premium</h4>
+                  <p className="text-sm text-gray-400">Sum of all coverage premiums</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-4xl font-bold text-blue-600">${totalPremium.toFixed(2)}M</p>
+                  <p className="text-4xl font-bold text-blue-400">${totalPremium.toFixed(2)}M</p>
                 </div>
               </div>
             </CardContent>
