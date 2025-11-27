@@ -740,16 +740,16 @@ async def seed_database(force: bool = False):
     
     # Sample properties with multiple LOBs
     sample_properties_list = [
-        {"name": "Marriott Hotel Chicago", "customer": "Marriott", "lobs": ["Property", "Umbrella"], "state": "Illinois", "sicCode": "7011", "operation": "Hospitality", "customerId": "CLT-001"},
-        {"name": "Houston Tech Center", "customer": "Tech Solutions Inc", "lobs": ["Property", "General Liability"], "state": "Texas", "sicCode": "7372", "operation": "Technology", "customerId": "CLT-002"},
-        {"name": "Miami Beach Resort", "customer": "Oceanfront Hotels", "lobs": ["Property", "Umbrella", "General Liability"], "state": "Florida", "sicCode": "7011", "operation": "Hospitality", "customerId": "CLT-003"},
-        {"name": "San Francisco Office Tower", "customer": "Bay Properties LLC", "lobs": ["Package", "Property"], "state": "California", "sicCode": "6512", "operation": "Real Estate", "customerId": "CLT-004"},
-        {"name": "Atlanta Distribution Center", "customer": "Logistics Corp", "lobs": ["Property", "Auto", "Inland Marine"], "state": "Georgia", "sicCode": "4225", "operation": "Logistics", "customerId": "CLT-005"},
-        {"name": "Phoenix Medical Plaza", "customer": "Healthcare Partners", "lobs": ["Property", "General Liability"], "state": "Texas", "sicCode": "8011", "operation": "Healthcare", "customerId": "CLT-006"},
-        {"name": "Boston Financial Tower", "customer": "Northeast Banking", "lobs": ["Package", "Umbrella"], "state": "New York", "sicCode": "6022", "operation": "Finance", "customerId": "CLT-007"},
-        {"name": "Seattle Manufacturing Plant", "customer": "Pacific Manufacturing", "lobs": ["Property", "Auto", "General Liability"], "state": "California", "sicCode": "3711", "operation": "Manufacturing", "customerId": "CLT-008"},
-        {"name": "Denver Shopping Mall", "customer": "Retail Properties Inc", "lobs": ["Property", "Umbrella"], "state": "Texas", "sicCode": "5311", "operation": "Retail", "customerId": "CLT-009"},
-        {"name": "Philadelphia Historic Building", "customer": "Heritage Properties", "lobs": ["Property"], "state": "Pennsylvania", "sicCode": "6512", "operation": "Real Estate", "customerId": "CLT-010"},
+        {"name": "Marriott Hotel Chicago", "customer": "Marriott", "lobs": ["Property", "Umbrella"], "state": "Illinois", "sicCode": "7011", "operation": "Hospitality", "customerId": "CLT-001", "product": "Multi Pro"},
+        {"name": "Houston Tech Center", "customer": "Tech Solutions Inc", "lobs": ["Property", "General Liability"], "state": "Texas", "sicCode": "7372", "operation": "Technology", "customerId": "CLT-002", "product": "Business Shield"},
+        {"name": "Miami Beach Resort", "customer": "Oceanfront Hotels", "lobs": ["Property", "Umbrella", "General Liability"], "state": "Florida", "sicCode": "7011", "operation": "Hospitality", "customerId": "CLT-003", "product": "Multi Pro"},
+        {"name": "San Francisco Office Tower", "customer": "Bay Properties LLC", "lobs": ["Package", "Property"], "state": "California", "sicCode": "6512", "operation": "Real Estate", "customerId": "CLT-004", "product": "Business Shield"},
+        {"name": "Atlanta Distribution Center", "customer": "Logistics Corp", "lobs": ["Property", "Auto", "Inland Marine"], "state": "Georgia", "sicCode": "4225", "operation": "Logistics", "customerId": "CLT-005", "product": "Multi Pro"},
+        {"name": "Phoenix Medical Plaza", "customer": "Healthcare Partners", "lobs": ["Property", "General Liability"], "state": "Texas", "sicCode": "8011", "operation": "Healthcare", "customerId": "CLT-006", "product": "Business Shield"},
+        {"name": "Boston Financial Tower", "customer": "Northeast Banking", "lobs": ["Package", "Umbrella"], "state": "New York", "sicCode": "6022", "operation": "Finance", "customerId": "CLT-007", "product": "Multi Pro"},
+        {"name": "Seattle Manufacturing Plant", "customer": "Pacific Manufacturing", "lobs": ["Property", "Auto", "General Liability"], "state": "California", "sicCode": "3711", "operation": "Manufacturing", "customerId": "CLT-008", "product": "Business Shield"},
+        {"name": "Denver Shopping Mall", "customer": "Retail Properties Inc", "lobs": ["Property", "Umbrella"], "state": "Texas", "sicCode": "5311", "operation": "Retail", "customerId": "CLT-009", "product": "Multi Pro"},
+        {"name": "Philadelphia Historic Building", "customer": "Heritage Properties", "lobs": ["Property"], "state": "Pennsylvania", "sicCode": "6512", "operation": "Real Estate", "customerId": "CLT-010", "product": "Business Shield"},
     ]
     
     for i, prop in enumerate(sample_properties_list):
@@ -758,7 +758,7 @@ async def seed_database(force: bool = False):
         # Create property
         property_doc = {
             "id": property_id,
-            "product": "Multi Pro",
+            "product": prop["product"],
             "lobs": prop["lobs"],
             "customerName": prop["customer"],
             "effectiveDate": f"09/29/2024",
