@@ -198,16 +198,16 @@ const DashboardUWRC = ({ user, onLogout }) => {
         </div>
 
         {/* Filters */}
-        <div className="bg-white border border-gray-200 rounded-lg p-6 mb-6 shadow-sm">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Filter Properties</h3>
+        <div className="bg-gray-800 border border-gray-700 rounded-lg p-6 mb-6">
+          <h3 className="text-lg font-semibold text-white mb-4">Filter Properties</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">State</label>
+              <label className="text-sm font-medium text-gray-300">State</label>
               <Select value={selectedState} onValueChange={setSelectedState}>
-                <SelectTrigger className="bg-white border-gray-300" data-testid="filter-state">
+                <SelectTrigger className="bg-gray-700 border-gray-600 text-white" data-testid="filter-state">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-white">
+                <SelectContent className="bg-gray-700 border-gray-600 text-white">
                   {filters.states.map(state => (
                     <SelectItem key={state} value={state}>{state}</SelectItem>
                   ))}
@@ -216,12 +216,12 @@ const DashboardUWRC = ({ user, onLogout }) => {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">LOB</label>
+              <label className="text-sm font-medium text-gray-300">LOB</label>
               <Select value={selectedLOB} onValueChange={setSelectedLOB}>
-                <SelectTrigger className="bg-white border-gray-300" data-testid="filter-lob">
+                <SelectTrigger className="bg-gray-700 border-gray-600 text-white" data-testid="filter-lob">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-white">
+                <SelectContent className="bg-gray-700 border-gray-600 text-white">
                   {filters.lobs.map(lob => (
                     <SelectItem key={lob} value={lob}>{lob}</SelectItem>
                   ))}
@@ -230,12 +230,12 @@ const DashboardUWRC = ({ user, onLogout }) => {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">Customer ID</label>
+              <label className="text-sm font-medium text-gray-300">Customer ID</label>
               <Select value={selectedCustomerId} onValueChange={setSelectedCustomerId}>
-                <SelectTrigger className="bg-white border-gray-300" data-testid="filter-customer-id">
+                <SelectTrigger className="bg-gray-700 border-gray-600 text-white" data-testid="filter-customer-id">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-white">
+                <SelectContent className="bg-gray-700 border-gray-600 text-white">
                   {filters.customerIds.map(id => (
                     <SelectItem key={id} value={id}>{id}</SelectItem>
                   ))}
@@ -246,18 +246,18 @@ const DashboardUWRC = ({ user, onLogout }) => {
         </div>
 
         {/* Risk Portfolio Table */}
-        <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+        <div className="bg-white border border-gray-200 rounded-lg p-6">
           <h2 className="text-xl font-bold text-gray-900 mb-4" data-testid="risk-portfolio-title">Risk Portfolio</h2>
           <div className="overflow-x-auto">
             <Table data-testid="risk-portfolio-table">
               <TableHeader>
                 <TableRow className="border-gray-200 hover:bg-gray-50">
-                  <TableHead className="text-gray-700 font-semibold">Product</TableHead>
-                  <TableHead className="text-gray-700 font-semibold">LOB</TableHead>
-                  <TableHead className="text-gray-700 font-semibold">Customer Name</TableHead>
-                  <TableHead className="text-gray-700 font-semibold">Effective Date</TableHead>
-                  <TableHead className="text-gray-700 font-semibold">SIC Code</TableHead>
-                  <TableHead className="text-gray-700 font-semibold">Operation</TableHead>
+                  <TableHead className="text-gray-700">Product</TableHead>
+                  <TableHead className="text-gray-700">LOB</TableHead>
+                  <TableHead className="text-gray-700">Customer Name</TableHead>
+                  <TableHead className="text-gray-700">Effective Date</TableHead>
+                  <TableHead className="text-gray-700">SIC Code</TableHead>
+                  <TableHead className="text-gray-700">Operation</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
