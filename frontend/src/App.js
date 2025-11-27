@@ -71,6 +71,18 @@ function App() {
             )
           } 
         />
+        <Route 
+          path="/property/:id/full-assessment" 
+          element={
+            isAuthenticated ? (
+              <Suspense fallback={<div className="flex items-center justify-center min-h-screen bg-gray-50">Loading...</div>}>
+                <FullAssessment user={user} onLogout={handleLogout} />
+              </Suspense>
+            ) : (
+              <Navigate to="/" />
+            )
+          } 
+        />
       </Routes>
     </BrowserRouter>
   );
