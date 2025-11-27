@@ -85,9 +85,9 @@ const LimitOfLiabilitiesPage = ({ propertyId, lob, propertyName }) => {
         </Table>
       </div>
 
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-        <p className="text-sm text-gray-700">
-          <span className="font-semibold">Note:</span> Items marked as "Not Covered" indicate exclusions in the policy and are not covered by the company.
+      <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-4">
+        <p className="text-sm text-gray-300">
+          <span className="font-semibold text-white">Note:</span> Items marked as "Not Covered" indicate exclusions in the policy and are not covered by the company.
         </p>
       </div>
     </div>
