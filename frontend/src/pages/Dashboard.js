@@ -11,11 +11,16 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { FileText, Clock, TrendingUp, CheckCircle, Zap, LogOut, Plus, Search } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '../components/ui/avatar';
+import DashboardUWRC from './DashboardUWRC';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const Dashboard = ({ user, onLogout }) => {
+  // Route to UWR_C dashboard if user role is UWR_C
+  if (user?.role === 'UWR_C') {
+    return <DashboardUWRC user={user} onLogout={onLogout} />;
+  }
   const navigate = useNavigate();
   const [statistics, setStatistics] = useState(null);
   const [proposals, setProposals] = useState([]);
