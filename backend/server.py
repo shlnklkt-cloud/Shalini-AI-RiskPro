@@ -414,6 +414,131 @@ async def get_multiline_quote(property_id: str):
         "totalPremium": f"${total_premium:.2f}M"
     }
 
+# ============= DOCUMENT MANAGEMENT APIs =============
+
+@api_router.get("/properties/{property_id}/documents")
+async def get_property_documents(property_id: str):
+    """Get documents for a property"""
+    documents = await db.documents.find({"propertyId": property_id}, {"_id": 0}).to_list(100)
+    return documents
+
+@api_router.post("/properties/{property_id}/documents")
+async def upload_document(property_id: str, document: dict):
+    """Upload a document (simulated)"""
+    doc = {
+        "id": str(uuid.uuid4()),
+        "propertyId": property_id,
+        "name": document.get("name", "document.pdf"),
+        "size": document.get("size", "0 KB"),
+        "uploadedAt": datetime.now(timezone.utc).isoformat(),
+        "status": "completed",
+        "confidence": 85
+    }
+    await db.documents.insert_one(doc)
+    return doc
+
+@api_router.delete("/properties/{property_id}/documents/{document_id}")
+async def delete_document(property_id: str, document_id: str):
+    """Delete a document"""
+    result = await db.documents.delete_one({"id": document_id, "propertyId": property_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Document not found")
+    return {"success": True, "message": "Document deleted"}
+
+# ============= FULL ASSESSMENT API =============
+
+@api_router.get("/properties/{property_id}/full-assessment")
+async def get_full_assessment(property_id: str):
+    """Get full risk assessment for a property"""
+    property_data = await db.properties.find_one({"id": property_id}, {"_id": 0})
+    if not property_data:
+        raise HTTPException(status_code=404, detail="Property not found")
+    
+    # Generate comprehensive assessment data
+    assessment = {
+        "propertyId": property_id,
+        "propertyName": property_data.get("propertyName", property_data.get("customerName")),
+        "overallRiskScore": 48.5,
+        "riskAnalysisSummary": {
+            "moderateRisk": "This property has been classified as MODERATE RISK based on comprehensive catastrophic modeling. The overall risk score indicates a balanced exposure with moderate mitigation strategies and hurricane risks being the primary concerns. Advanced mitigation strategies are recommended for these specific perils.",
+            "recommendation": "Implement comprehensive flood mitigation measures including elevation and drainage improvements."
+        },
+        "riskComponents": [
+            {
+                "name": "Earthquake Risk",
+                "score": 42.0,
+                "severity": "moderate",
+                "description": "Moderate seismic activity possible. Building age and construction type influence vulnerability. Regular structural assessments recommended.",
+                "recommendation": "Seismic retrofitting, Foundation reinforcement"
+            },
+            {
+                "name": "Wildfire Risk",
+                "score": 20.0,
+                "severity": "low",
+                "description": "Low to urban location, adequate fire protection. Fire protection infrastructure. Vegetation management and suppression systems in place.",
+                "recommendation": "Maintain defensible space, Fire-resistant landscaping"
+            },
+            {
+                "name": "Hurricane Risk",
+                "score": 65.0,
+                "severity": "high",
+                "description": "Elevated hurricane exposure based on coastal proximity. Wind speed ratings exceed regional standards. Potential surge risk, Vulnerable openings.",
+                "recommendation": "Impact-resistant windows, Storm shutters, Secure doors"
+            },
+            {
+                "name": "Flood Risk",
+                "score": 67.0,
+                "severity": "high",
+                "description": "High flood risk identified. Property located in FEMA flood zone with historical flooding data. Historical flooding events recorded.",
+                "recommendation": "Implement flood barriers, Improve drainage, Consider relocation"
+            }
+        ],
+        "catastrophicRiskModeling": [
+            {
+                "type": "Earthquake Risk",
+                "amount": "$336K",
+                "details": "PML (250yr): $336K, PML (500yr): $482K"
+            },
+            {
+                "type": "Flood Risk",
+                "amount": "$206K",
+                "details": "PML (100yr): $206K, PML (500yr): $398K"
+            },
+            {
+                "type": "Hurricane Risk",
+                "amount": "$286K",
+                "details": "PML (100yr): $286K, PML (250yr): $524K"
+            },
+            {
+                "type": "Wildfire Risk",
+                "amount": "$107K",
+                "details": "PML (100yr): $107K, PML (250yr): $198K"
+            }
+        ],
+        "locationIntelligence": {
+            "address": property_data.get("propertyName", "N/A"),
+            "city": property_data.get("state", "N/A"),
+            "coordinates": "41.8781,-87.6298",
+            "buildingType": property_data.get("operation", "N/A"),
+            "yearBuilt": "2010",
+            "constructionType": "Steel Frame"
+        },
+        "concentrationAnalysis": {
+            "totalInsuredValue": "$185.0M",
+            "businessType": property_data.get("operation", "N/A"),
+            "sicCode": property_data.get("sicCode", "N/A"),
+            "constructionType": "Steel Frame"
+        },
+        "mitigationRecommendations": [
+            "Implement comprehensive flood mitigation measures including elevation and drainage improvements",
+            "Upgrade hurricane resistance with impact-resistant windows and reinforced doors",
+            "Consider seismic retrofitting to reduce earthquake vulnerability exposure levels",
+            "Annual risk assessment and insurance coverage review"
+        ]
+    }
+    
+    return assessment
+
 # ============= SEED DATA =============
 
 @api_router.post("/seed")
