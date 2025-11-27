@@ -166,46 +166,67 @@ const FullAssessment = ({ user, onLogout }) => {
         </div>
 
         {/* Location Intelligence & Risk Mapping */}
-        <div className="bg-purple-700 text-white rounded-lg p-8 shadow-xl">
-          <h2 className="text-3xl font-bold mb-6 flex items-center">
-            <svg className="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+        <div>
+          <div className="bg-gradient-to-r from-purple-600 to-purple-700 text-white p-6 rounded-t-lg flex items-center gap-3">
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
-            Location Intelligence & Risk Mapping
-          </h2>
-          <div className="bg-white rounded-lg p-1 mb-6 relative">
-            {/* Interactive Map with OpenStreetMap */}
-            <iframe
-              width="100%"
-              height="400"
-              frameBorder="0"
-              scrolling="no"
-              marginHeight="0"
-              marginWidth="0"
-              src={`https://www.openstreetmap.org/export/embed.html?bbox=${parseFloat(assessment.locationIntelligence?.coordinates.split(',')[1]) - 0.05},${parseFloat(assessment.locationIntelligence?.coordinates.split(',')[0]) - 0.05},${parseFloat(assessment.locationIntelligence?.coordinates.split(',')[1]) + 0.05},${parseFloat(assessment.locationIntelligence?.coordinates.split(',')[0]) + 0.05}&layer=mapnik&marker=${assessment.locationIntelligence?.coordinates.split(',')[0]},${assessment.locationIntelligence?.coordinates.split(',')[1]}`}
-              style={{ border: 'none', borderRadius: '8px' }}
-              title="Property Location Map"
-            />
-            <div className="absolute top-4 right-4 bg-white px-4 py-2 rounded-lg shadow-lg">
-              <p className="text-red-600 font-bold text-sm">📍 Property Location</p>
-            </div>
+            <h2 className="text-3xl font-bold">Location Intelligence & Risk Mapping</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-            <div>
-              <p className="opacity-75 mb-1">Address</p>
-              <p className="font-bold">{assessment.locationIntelligence?.address}</p>
+          
+          <div className="bg-white rounded-b-lg overflow-hidden border border-gray-200">
+            {/* Embedded Google Maps with Satellite View */}
+            <div className="relative h-96 bg-gray-100">
+              <iframe
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                style={{border: 0}}
+                referrerPolicy="no-referrer-when-downgrade"
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodeURIComponent(assessment.locationIntelligence?.address)}&center=${assessment.locationIntelligence?.coordinates}&zoom=19&maptype=satellite`}
+                allowFullScreen
+                title="Property Location Map"
+              />
             </div>
-            <div>
-              <p className="opacity-75 mb-1">Coordinates</p>
-              <p className="font-bold">{assessment.locationIntelligence?.coordinates}</p>
+
+            {/* Location Details Grid */}
+            <div className="grid grid-cols-4 gap-6 p-6 bg-gray-50">
+              <div>
+                <p className="text-xs text-gray-500 uppercase mb-1">Address</p>
+                <p className="text-base font-semibold text-gray-900">{assessment.locationIntelligence?.address}</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase mb-1">Latitude</p>
+                <p className="text-base font-semibold text-gray-900">{assessment.locationIntelligence?.coordinates.split(',')[0]}</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase mb-1">Longitude</p>
+                <p className="text-base font-semibold text-gray-900">{assessment.locationIntelligence?.coordinates.split(',')[1]}</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase mb-1">Precision</p>
+                <p className="text-base font-semibold text-gray-900">Rooftop</p>
+              </div>
             </div>
-            <div>
-              <p className="opacity-75 mb-1">Year Built</p>
-              <p className="font-bold">{assessment.locationIntelligence?.yearBuilt}</p>
-            </div>
-            <div>
-              <p className="opacity-75 mb-1">Construction</p>
-              <p className="font-bold">{assessment.locationIntelligence?.constructionType}</p>
+
+            <div className="grid grid-cols-4 gap-6 p-6 pt-0 bg-gray-50">
+              <div>
+                <p className="text-xs text-gray-500 uppercase mb-1">Year Built</p>
+                <p className="text-base font-semibold text-gray-900">{assessment.locationIntelligence?.yearBuilt}</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase mb-1">Construction Type</p>
+                <p className="text-base font-semibold text-gray-900">{assessment.locationIntelligence?.constructionType}</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase mb-1">Building Type</p>
+                <p className="text-base font-semibold text-gray-900">{assessment.locationIntelligence?.buildingType}</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase mb-1">City/State</p>
+                <p className="text-base font-semibold text-gray-900">{assessment.locationIntelligence?.city}</p>
+              </div>
             </div>
           </div>
         </div>
