@@ -36,8 +36,8 @@ const PropertyRiskAnalyzer = ({ property }) => {
                   enabled
                     ? activeLOB === lob
                       ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                    : 'bg-gray-50 text-gray-400 cursor-not-allowed opacity-50'
+                      : 'bg-gray-700 text-white hover:bg-gray-600'
+                    : 'bg-gray-700/50 text-gray-500 cursor-not-allowed opacity-50'
                 }`}
                 data-testid={`lob-button-${lob.toLowerCase().replace(/\s+/g, '-')}`}
               >
@@ -46,21 +46,21 @@ const PropertyRiskAnalyzer = ({ property }) => {
             );
           })}
         </div>
-        <p className="text-sm text-gray-600 mt-4">
-          This property covers: <span className="font-semibold">{property.lobs?.join(', ')}</span>
+        <p className="text-sm text-gray-400 mt-4">
+          This property covers: <span className="font-semibold text-white">{property.lobs?.join(', ')}</span>
         </p>
       </div>
 
       {/* Sub-tabs for selected LOB */}
-      <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
-        <div className="border-b border-gray-200 px-6 pt-4">
+      <div className="bg-gray-800 border border-gray-700 rounded-lg">
+        <div className="border-b border-gray-700 px-6 pt-4">
           <div className="flex gap-2">
             <button
               onClick={() => setActiveSubTab('exposure')}
               className={`px-6 py-3 font-semibold transition-colors border-b-2 ${
                 activeSubTab === 'exposure'
-                  ? 'border-blue-600 text-blue-600'
-                  : 'border-transparent text-gray-600 hover:text-gray-900'
+                  ? 'border-blue-500 text-blue-400'
+                  : 'border-transparent text-gray-400 hover:text-white'
               }`}
               data-testid="subtab-exposure"
             >
@@ -70,8 +70,8 @@ const PropertyRiskAnalyzer = ({ property }) => {
               onClick={() => setActiveSubTab('limits')}
               className={`px-6 py-3 font-semibold transition-colors border-b-2 ${
                 activeSubTab === 'limits'
-                  ? 'border-blue-600 text-blue-600'
-                  : 'border-transparent text-gray-600 hover:text-gray-900'
+                  ? 'border-blue-500 text-blue-400'
+                  : 'border-transparent text-gray-400 hover:text-white'
               }`}
               data-testid="subtab-limits"
             >
@@ -81,8 +81,8 @@ const PropertyRiskAnalyzer = ({ property }) => {
               onClick={() => setActiveSubTab('whatif')}
               className={`px-6 py-3 font-semibold transition-colors border-b-2 ${
                 activeSubTab === 'whatif'
-                  ? 'border-blue-600 text-blue-600'
-                  : 'border-transparent text-gray-600 hover:text-gray-900'
+                  ? 'border-blue-500 text-blue-400'
+                  : 'border-transparent text-gray-400 hover:text-white'
               }`}
               data-testid="subtab-whatif"
             >
