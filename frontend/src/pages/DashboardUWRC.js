@@ -70,7 +70,7 @@ const DashboardUWRC = ({ user, onLogout }) => {
         <div className="space-y-6">
           <Button 
             variant="default" 
-            className="w-full justify-start bg-blue-600 hover:bg-blue-700 text-white"
+            className="w-full justify-start bg-blue-600 hover:bg-blue-700"
             data-testid="dashboard-nav-button"
           >
             <FileText className="mr-2 h-4 w-4" />
@@ -80,7 +80,7 @@ const DashboardUWRC = ({ user, onLogout }) => {
           <div className="pt-8">
             <Button 
               variant="ghost" 
-              className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50"
+              className="w-full justify-start text-red-400 hover:text-red-300 hover:bg-red-500/10"
               onClick={onLogout}
               data-testid="logout-button"
             >
@@ -96,13 +96,13 @@ const DashboardUWRC = ({ user, onLogout }) => {
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2" data-testid="dashboard-title">Underwriter Workbench</h1>
+            <h1 className="text-3xl font-bold text-white mb-2" data-testid="dashboard-title">Underwriter Workbench</h1>
             <div className="flex items-center gap-3">
               <Avatar className="h-10 w-10">
                 <AvatarImage src="https://avatar.iran.liara.run/public/girl?username=Zara" />
                 <AvatarFallback>{user?.fullName?.[0]}</AvatarFallback>
               </Avatar>
-              <p className="text-gray-600" data-testid="welcome-message">Welcome back, <span className="text-gray-900 font-semibold">{user?.fullName}</span></p>
+              <p className="text-gray-400" data-testid="welcome-message">Welcome back, <span className="text-white font-semibold">{user?.fullName}</span></p>
             </div>
           </div>
         </div>
