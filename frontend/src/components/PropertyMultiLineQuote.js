@@ -26,37 +26,37 @@ const PropertyMultiLineQuote = ({ property }) => {
   };
 
   if (loading) {
-    return <div className="text-gray-600">Loading multi-line quote...</div>;
+    return <div className="text-gray-400">Loading multi-line quote...</div>;
   }
 
   return (
     <div className="space-y-6" data-testid="multiline-quote">
       <div>
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Multi Line Quote</h2>
-        <p className="text-gray-600">Comprehensive premium summary across all lines of business</p>
+        <h2 className="text-3xl font-bold text-white mb-2">Multi Line Quote</h2>
+        <p className="text-gray-400">Comprehensive premium summary across all lines of business</p>
       </div>
 
-      <Card className="bg-white border-gray-200 shadow-sm">
+      <Card className="bg-gray-800 border-gray-700">
         <CardContent className="p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Property Information</h3>
+          <h3 className="text-xl font-bold text-white mb-4">Property Information</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div>
-              <p className="text-xs text-gray-600 uppercase mb-1 font-semibold">Property Name</p>
-              <p className="text-base font-semibold text-gray-900">{property.propertyName || property.customerName}</p>
+              <p className="text-xs text-gray-400 uppercase mb-1 font-semibold">Property Name</p>
+              <p className="text-base font-semibold text-white">{property.propertyName || property.customerName}</p>
             </div>
             <div>
-              <p className="text-xs text-gray-600 uppercase mb-1 font-semibold">Customer</p>
-              <p className="text-base font-semibold text-gray-900">{property.customerName}</p>
+              <p className="text-xs text-gray-400 uppercase mb-1 font-semibold">Customer</p>
+              <p className="text-base font-semibold text-white">{property.customerName}</p>
             </div>
             <div>
-              <p className="text-xs text-gray-600 uppercase mb-1 font-semibold">Effective Date</p>
-              <p className="text-base font-semibold text-gray-900">{property.effectiveDate}</p>
+              <p className="text-xs text-gray-400 uppercase mb-1 font-semibold">Effective Date</p>
+              <p className="text-base font-semibold text-white">{property.effectiveDate}</p>
             </div>
           </div>
         </CardContent>
       </Card>
 
-      <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+      <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
         <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
           <h3 className="text-xl font-bold text-gray-900">Premium Breakdown by LOB</h3>
         </div>
