@@ -90,14 +90,14 @@ const WhatIfAnalysisPage = ({ propertyId, lob, propertyName }) => {
   };
 
   if (loading) {
-    return <div className=\"text-gray-600\">Loading what-if analysis...</div>;
+    return <div className="text-gray-600">Loading what-if analysis...</div>;
   }
 
   return (
-    <div className=\"space-y-6\" data-testid=\"whatif-page\">
+    <div className="space-y-6" data-testid="whatif-page">
       <div>
-        <h3 className=\"text-2xl font-bold text-gray-900 mb-2\">{propertyName}</h3>
-        <p className=\"text-gray-600\">What-If Analysis for <span className=\"font-semibold\">{lob}</span></p>
+        <h3 className="text-2xl font-bold text-gray-900 mb-2">{propertyName}</h3>
+        <p className="text-gray-600">What-If Analysis for <span className="font-semibold">{lob}</span></p>
       </div>
 
       {coverages.length > 0 ? (
