@@ -173,15 +173,22 @@ const FullAssessment = ({ user, onLogout }) => {
             </svg>
             Location Intelligence & Risk Mapping
           </h2>
-          <div className="bg-white rounded-lg p-1 mb-6">
-            <img 
-              src="https://api.mapbox.com/styles/v1/mapbox/dark-v10/static/-87.6298,41.8781,12,0/1200x400@2x?access_token=pk.eyJ1IjoiZXhhbXBsZSIsImEiOiJjbGV4YW1wbGUifQ.example" 
-              alt="Risk Map"
-              className="w-full h-96 object-cover rounded"
-              onError={(e) => {
-                e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='400'%3E%3Crect width='1200' height='400' fill='%23374151'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23fff'%3EMap View - Location Intelligence%3C/text%3E%3C/svg%3E";
-              }}
+          <div className="bg-white rounded-lg p-1 mb-6 relative">
+            {/* Interactive Map with OpenStreetMap */}
+            <iframe
+              width="100%"
+              height="400"
+              frameBorder="0"
+              scrolling="no"
+              marginHeight="0"
+              marginWidth="0"
+              src={`https://www.openstreetmap.org/export/embed.html?bbox=${parseFloat(assessment.locationIntelligence?.coordinates.split(',')[1]) - 0.05},${parseFloat(assessment.locationIntelligence?.coordinates.split(',')[0]) - 0.05},${parseFloat(assessment.locationIntelligence?.coordinates.split(',')[1]) + 0.05},${parseFloat(assessment.locationIntelligence?.coordinates.split(',')[0]) + 0.05}&layer=mapnik&marker=${assessment.locationIntelligence?.coordinates.split(',')[0]},${assessment.locationIntelligence?.coordinates.split(',')[1]}`}
+              style={{ border: 'none', borderRadius: '8px' }}
+              title="Property Location Map"
             />
+            <div className="absolute top-4 right-4 bg-white px-4 py-2 rounded-lg shadow-lg">
+              <p className="text-red-600 font-bold text-sm">📍 Property Location</p>
+            </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
             <div>
