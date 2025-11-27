@@ -106,36 +106,36 @@ const WhatIfAnalysisPage = ({ propertyId, lob, propertyName }) => {
             {coverages.map((coverage, index) => (
               <Card key={index} className=\"bg-white border-gray-200\">
                 <CardContent className=\"p-6\">
-                  <div className=\"mb-4\">
-                    <h4 className=\"text-lg font-semibold text-gray-900 mb-2\">{coverage.name}</h4>
-                    <div className=\"flex items-center gap-4 text-sm text-gray-600\">
+                  <div className="mb-4">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{coverage.name}</h4>
+                    <div className="flex items-center gap-4 text-sm text-gray-600">
                       <span>Range: ${coverage.minLimit}M - ${coverage.maxLimit}M</span>
-                      <span className=\"text-gray-400\">|</span>
-                      <span>Selected: <span className=\"font-semibold text-gray-900\">${coverage.selectedLimit.toFixed(1)}M</span></span>
-                      <span className=\"text-gray-400\">|</span>
-                      <span>Deductible: <span className=\"font-semibold text-gray-900\">${coverage.deductible}M</span></span>
+                      <span className="text-gray-400">|</span>
+                      <span>Selected: <span className="font-semibold text-gray-900">${coverage.selectedLimit.toFixed(1)}M</span></span>
+                      <span className="text-gray-400">|</span>
+                      <span>Deductible: <span className="font-semibold text-gray-900">${coverage.deductible}M</span></span>
                     </div>
                   </div>
 
-                  <div className=\"mb-4\">
+                  <div className="mb-4">
                     <Slider
                       value={[coverage.selectedLimit]}
                       min={coverage.minLimit}
                       max={coverage.maxLimit}
                       step={0.5}
                       onValueChange={(value) => handleSliderChange(index, value)}
-                      className=\"w-full\"
+                      className="w-full"
                     />
-                    <div className=\"flex justify-between text-xs text-gray-500 mt-2\">
+                    <div className="flex justify-between text-xs text-gray-500 mt-2">
                       <span>${coverage.minLimit}M</span>
                       <span>${(coverage.maxLimit / 2).toFixed(0)}M</span>
                       <span>${coverage.maxLimit}M</span>
                     </div>
                   </div>
 
-                  <div className=\"flex justify-between items-center pt-4 border-t border-gray-200\">
-                    <span className=\"text-sm font-medium text-gray-700\">Calculated Premium</span>
-                    <span className=\"text-xl font-bold text-green-600\">${coverage.premium.toFixed(2)}M</span>
+                  <div className="flex justify-between items-center pt-4 border-t border-gray-200">
+                    <span className="text-sm font-medium text-gray-700">Calculated Premium</span>
+                    <span className="text-xl font-bold text-green-600">${coverage.premium.toFixed(2)}M</span>
                   </div>
                 </CardContent>
               </Card>
