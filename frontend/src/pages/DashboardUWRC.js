@@ -109,43 +109,43 @@ const DashboardUWRC = ({ user, onLogout }) => {
 
         {/* Statistics Cards - Top Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-          <Card className="bg-white border-gray-200 shadow-sm" data-testid="stat-new-business">
+          <Card className="bg-gray-800 border-gray-700" data-testid="stat-new-business">
             <CardContent className="p-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-gray-600 text-sm mb-1">New Business</p>
-                  <p className="text-3xl font-bold text-gray-900">{statistics?.newBusiness || 0}</p>
+                  <p className="text-gray-400 text-sm mb-1">New Business</p>
+                  <p className="text-3xl font-bold text-white">{statistics?.newBusiness || 0}</p>
                 </div>
-                <div className="bg-blue-100 p-3 rounded-full">
-                  <FileText className="h-6 w-6 text-blue-600" />
+                <div className="bg-blue-500/20 p-3 rounded-full">
+                  <FileText className="h-6 w-6 text-blue-400" />
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200 shadow-sm" data-testid="stat-renewals">
+          <Card className="bg-gray-800 border-gray-700" data-testid="stat-renewals">
             <CardContent className="p-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-gray-600 text-sm mb-1">Renewals</p>
-                  <p className="text-3xl font-bold text-gray-900">{statistics?.renewals || 0}</p>
+                  <p className="text-gray-400 text-sm mb-1">Renewals</p>
+                  <p className="text-3xl font-bold text-white">{statistics?.renewals || 0}</p>
                 </div>
-                <div className="bg-green-100 p-3 rounded-full">
-                  <TrendingUp className="h-6 w-6 text-green-600" />
+                <div className="bg-green-500/20 p-3 rounded-full">
+                  <TrendingUp className="h-6 w-6 text-green-400" />
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200 shadow-sm" data-testid="stat-endorsement">
+          <Card className="bg-gray-800 border-gray-700" data-testid="stat-endorsement">
             <CardContent className="p-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-gray-600 text-sm mb-1">Endorsement</p>
-                  <p className="text-3xl font-bold text-gray-900">{statistics?.endorsements || 0}</p>
+                  <p className="text-gray-400 text-sm mb-1">Endorsement</p>
+                  <p className="text-3xl font-bold text-white">{statistics?.endorsements || 0}</p>
                 </div>
-                <div className="bg-purple-100 p-3 rounded-full">
-                  <FileText className="h-6 w-6 text-purple-600" />
+                <div className="bg-purple-500/20 p-3 rounded-full">
+                  <FileText className="h-6 w-6 text-purple-400" />
                 </div>
               </div>
             </CardContent>
@@ -154,43 +154,43 @@ const DashboardUWRC = ({ user, onLogout }) => {
 
         {/* Statistics Cards - Bottom Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card className="bg-white border-gray-200 shadow-sm" data-testid="stat-pending-submissions">
+          <Card className="bg-gray-800 border-gray-700" data-testid="stat-pending-submissions">
             <CardContent className="p-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-gray-600 text-sm mb-1">Pending Submission</p>
-                  <p className="text-3xl font-bold text-orange-600">{statistics?.pendingSubmissions || 0}</p>
+                  <p className="text-gray-400 text-sm mb-1">Pending Submission</p>
+                  <p className="text-3xl font-bold text-orange-400">{statistics?.pendingSubmissions || 0}</p>
                 </div>
-                <div className="bg-orange-100 p-3 rounded-full">
-                  <Clock className="h-6 w-6 text-orange-600" />
+                <div className="bg-orange-500/20 p-3 rounded-full">
+                  <Clock className="h-6 w-6 text-orange-400" />
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200 shadow-sm" data-testid="stat-potential-premium">
+          <Card className="bg-gray-800 border-gray-700" data-testid="stat-potential-premium">
             <CardContent className="p-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-gray-600 text-sm mb-1">Potential Premium</p>
-                  <p className="text-3xl font-bold text-gray-900">{statistics?.potentialPremium || '$0M'}</p>
+                  <p className="text-gray-400 text-sm mb-1">Potential Premium</p>
+                  <p className="text-3xl font-bold text-white">{statistics?.potentialPremium || '$0M'}</p>
                 </div>
-                <div className="bg-green-100 p-3 rounded-full">
-                  <DollarSign className="h-6 w-6 text-green-600" />
+                <div className="bg-green-500/20 p-3 rounded-full">
+                  <DollarSign className="h-6 w-6 text-green-400" />
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200 shadow-sm" data-testid="stat-hit-ratio">
+          <Card className="bg-gray-800 border-gray-700" data-testid="stat-hit-ratio">
             <CardContent className="p-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-gray-600 text-sm mb-1">Hit Ratio</p>
-                  <p className="text-3xl font-bold text-gray-900">{statistics?.hitRatio || 0}%</p>
+                  <p className="text-gray-400 text-sm mb-1">Hit Ratio</p>
+                  <p className="text-3xl font-bold text-purple-400">{statistics?.hitRatio || 0}%</p>
                 </div>
-                <div className="bg-blue-100 p-3 rounded-full">
-                  <TrendingUp className="h-6 w-6 text-blue-600" />
+                <div className="bg-purple-500/20 p-3 rounded-full">
+                  <TrendingUp className="h-6 w-6 text-purple-400" />
                 </div>
               </div>
             </CardContent>
